@@ -1,9 +1,7 @@
 package SharedTC;
 
-import org.apache.log4j.Logger;
-import org.openqa.selenium.support.PageFactory;
-import SharedTC.STC_Register;
 import ApplicationPages.Login;
+import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
 
 
@@ -24,8 +22,6 @@ public class STC_Login {
 		if (test.driver.getTitle().equals("Policy"))
 			test.getLogger().info("Logged in successfully.");
 		else {
-			 STC_Register stc_Register = new STC_Register();
-			 stc_Register.register(test);
 		}
 }
 }
