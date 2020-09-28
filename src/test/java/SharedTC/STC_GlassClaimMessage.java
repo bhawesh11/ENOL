@@ -1,12 +1,10 @@
-package sharedTC;
+package SharedTC;
+
+import ApplicationPages.GlassClaim;
+import org.openqa.selenium.support.PageFactory;
+import resources.Testing;
 
 import static org.testng.Assert.assertTrue;
-
-import org.openqa.selenium.support.PageFactory;
-
-import applicationPages.GlassClaim;
-import applicationPages.IncidentDetails;
-import resources.Testing;
 
 public class STC_GlassClaimMessage {
 	
