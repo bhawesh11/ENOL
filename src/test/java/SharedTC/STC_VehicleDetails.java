@@ -1,5 +1,5 @@
-package sharedTC;
-import applicationPages.VehicleDetails;
+package SharedTC;
+import ApplicationPages.VehicleDetails;
 import resources.Testing;
 import org.openqa.selenium.support.PageFactory;
 
