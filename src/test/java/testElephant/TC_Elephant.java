@@ -26,7 +26,7 @@ public class TC_Elephant {
 	// ==============================================================================================
 	// Creating Objects :
 
-	STC_ElephantVehicleDetails stc_ElephantVehicleDetails = new STC_ElephantVehicleDetails();
+
 	STC_WitnessPolice stc_WitnessPolice = new STC_WitnessPolice();
 
 	
@@ -42,7 +42,6 @@ public class TC_Elephant {
 		Testing test = new Testing(ENV, brandName, "SimpleClaim");
 		try {
 
-			stc_ElephantVehicleDetails.hail(test);
 			stc_WitnessPolice.witnessPolice(test);
 		} catch (Throwable e) {
 			throw (e);
