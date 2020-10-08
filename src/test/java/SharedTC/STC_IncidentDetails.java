@@ -1,12 +1,10 @@
-package sharedTC;
-
-import static org.testng.Assert.assertTrue;
-
-import org.openqa.selenium.support.PageFactory;
+package SharedTC;
 
 import ApplicationPages.IncidentDetails;
-import ApplicationPages.LaunchPage;
+import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
+
+import static org.testng.Assert.assertTrue;
 
 public class STC_IncidentDetails {
 	
