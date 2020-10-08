@@ -1,4 +1,4 @@
-package sharedTC;
+package SharedTC;
 
 import org.openqa.selenium.support.PageFactory;
 

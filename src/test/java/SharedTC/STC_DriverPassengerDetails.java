@@ -1,13 +1,9 @@
-package sharedTC;
+package SharedTC;
 
-import applicationPages.AnotherVehicleInvolved;
-import applicationPages.DriverPassengerDetails;
-import applicationPages.VehicleDetails;
-import org.junit.Test;
+import ApplicationPages.DriverPassengerDetails;
+import ApplicationPages.AnotherVehicleInvolved;
 import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
-
-import java.sql.Driver;
 
 public class STC_DriverPassengerDetails {
 
@@ -55,6 +51,8 @@ public class STC_DriverPassengerDetails {
     }
     public void addPassenger(Testing test)
     {
+        test.setPage(DriverPassengerDetails.class);
+        DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver, test.getPage());
         test.webFunctions().click(test,driverPassengerDetails.btn_PassengerPresent,test.getTestData("PassengerPresent"));
         test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerFirstName,test.getTestData("PassengerFirstName"));
         test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerLastName,test.getTestData("PassengerLastName"));
@@ -70,24 +68,26 @@ public class STC_DriverPassengerDetails {
     }
     public void maxPassengerWarningMessage(Testing test)
     {
+        test.setPage(DriverPassengerDetails.class);
+        DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver, test.getPage());
         for(int i=1;i<=8;i++)
         {
-            test.webFunctions().click(test,driverPassengerDetails.btn_PassengerPresent,test.getTestData("PassengerPresent"+i""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerFirstName,test.getTestData("PassengerFirstName"+i""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerLastName,test.getTestData("PassengerLastName"+i""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerDOB,test.getTestData("PassengerDOB"+i""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerAddress,test.getTestData("PassengerAddress"+i""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerCity,test.getTestData("PassengerCity"+i""));
+            test.webFunctions().click(test,driverPassengerDetails.btn_PassengerPresent,test.getTestData("PassengerPresent"+i+""));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerFirstName,test.getTestData("PassengerFirstName"+i+""));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerLastName,test.getTestData("PassengerLastName"+i+""));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerDOB,test.getTestData("PassengerDOB"+i+""));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerAddress,test.getTestData("PassengerAddress"+i+""));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerCity,test.getTestData("PassengerCity"+i+""));
             test.webFunctions().click(test,driverPassengerDetails.dropdown_PassengerState);
-            test.webFunctions().click(test,driverPassengerDetails.dropdown_DriverStateName,test.getTestData("PassengerStateName"+i""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPostalCode,test.getTestData("PasengerPostalCode"+i""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPhone,test.getTestData("PassengerPhone"+i""));
+            test.webFunctions().click(test,driverPassengerDetails.dropdown_DriverStateName,test.getTestData("PassengerStateName"+i+""));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPostalCode,test.getTestData("PasengerPostalCode"+i+""));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPhone,test.getTestData("PassengerPhone"+i+""));
             test.webFunctions().click(test,driverPassengerDetails.btn_PassengerInjuredNo);
-            test.webFunctions().type(test,driverPassengerDetails.textarea_PassengerInjuryDescription,test.getTestData("PassengerInjuryDescription"+i""));
+            test.webFunctions().type(test,driverPassengerDetails.textarea_PassengerInjuryDescription,test.getTestData("PassengerInjuryDescription"+i+""));
 
         }
         }
-    }
+
 
     public void anotherVehicleNotInvolved(Testing test)
     {
@@ -97,7 +97,9 @@ public class STC_DriverPassengerDetails {
     public void anotherVehicleInvolved(Testing test)
     {
         test.setPage(AnotherVehicleInvolved.class);
+        test.setPage(DriverPassengerDetails.class);
         AnotherVehicleInvolved anotherVehicleInvolved= (AnotherVehicleInvolved) PageFactory.initElements(test.driver, test.getPage());
+        DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver,test.getPage());
         test.webFunctions().type(test,anotherVehicleInvolved.textbox_VinNo,test.getTestData("VIN"));
         test.webFunctions().type(test,anotherVehicleInvolved.textbox_LicensePlateNumber,test.getTestData("PlateNumber"));
         test.webFunctions().click(test,anotherVehicleInvolved.dropdown_SelectState);
@@ -107,7 +109,8 @@ public class STC_DriverPassengerDetails {
         test.webFunctions().click(test,anotherVehicleInvolved.btn_Towed,test.getTestData("Towed"));
         test.webFunctions().click(test,anotherVehicleInvolved.btn_AirbagsDeployed,test.getTestData("AirbagsDeployed"));
         test.webFunctions().click(test,anotherVehicleInvolved.btn_Next);
-        driverNotPresent(test);
+        test.webFunctions().click(test,driverPassengerDetails.btn_DriversAtTimeOfIncident);
+
     }
 
 }
