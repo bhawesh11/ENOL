@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class DriverPassengerDetails {
 
-    public String btn_DriverPresent = "//label[contains(@for,'noDriverIncident')]/child::span[contains(text(),'')]"; // Replace the Yes/No with {0}
+    public String btn_DriverPresent = "//label[contains(@for,'noDriverIncident')]/child::span[contains(text(),'{0}')]"; // Replace the Yes/No with {0}
 
     public String btn_DriverAsPolicyHolder = "//label[contains(@for,'sameAsPolicyHolder')]/child::span[contains(text(),'')]"; // Replace the Yes/No with {0}
 
