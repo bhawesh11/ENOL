@@ -29,7 +29,6 @@ public class STC_IncidentDetails {
         test.webFunctions().type(test, incidentDetails.textbox_IncidentTime, test.getTestData("IncidentDetails.IncidentTime"));
         test.webFunctions().click(test, incidentDetails.dropdown_AMPM);
         test.webFunctions().click(test, incidentDetails.dropdownValue_AM);
-        test.webFunctions().click(test, incidentDetails.dropdownValue_AM);
         test.webFunctions().click(test, incidentDetails.button_VehicleInvolved,test.getTestData("IncidentDetails.VehicleInvolved"));
         test.webFunctions().click(test, incidentDetails.button_Next);
         test.getLogger().info("Incident Details Info entered, navigating to Vehicle Details Page...");

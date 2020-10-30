@@ -62,7 +62,7 @@ public class TC_Elephant {
 	}// closing TC001 method
 
 	//TC002
-	@Test(enabled= true,priority = 5, description="4V Claim")
+	@Test(enabled= false,priority = 5, description="4V Claim")
 	@Parameters("ENV")
 	public void TC002(String ENV){
 		Testing test= new Testing(ENV, brandName,"4VClaim");
@@ -96,4 +96,29 @@ public class TC_Elephant {
 	}// closing TC003 method
 
 	// --------------------------------------------------------------------------------------
+	@Test(enabled = true, priority = 5, description = "Create_Claim_without_login")
+	@Parameters("ENV")
+	public void TC006(String ENV) throws Throwable {
+
+		Testing test = new Testing(ENV, brandName, "Create_Claim_without_login");
+		try {
+
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_tellUsMore.TellUsMore_WithoutLogin(test);
+			stc_vehicleDetails.vehicleInvolvedWithoutVin(test);
+			stc_driverPassengerDetails.driverPresent(test);
+			stc_driverPassengerDetails.passengerNotPresent(test);
+			stc_driverPassengerDetails.anotherVehicleNotInvolved(test);
+			stc_WitnessPolice.witnessPolice_No(test);
+			stc_contactInformation.contactInformationPage(test);
+			stc_thankyouPage.getClaimNo(test);
+		} catch (Throwable e) {
+			throw (e);
+		} finally {
+			test.tearDown();
+		}
+	}
+
+
 }
