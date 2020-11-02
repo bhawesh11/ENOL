@@ -48,7 +48,7 @@ public class TC_Elephant {
 
 
 	// TC001
-	@Test(enabled = false, priority = 5, description = "Simple Claim")
+	@Test(enabled = true, priority = 5, description = "Simple Claim")
 	@Parameters("ENV")
 	public void TC001(String ENV) {
 
@@ -62,7 +62,7 @@ public class TC_Elephant {
 	}// closing TC001 method
 
 	//TC002
-	@Test(enabled= false,priority = 5, description="4V Claim")
+	@Test(enabled= true,priority = 5, description="4V Claim")
 	@Parameters("ENV")
 	public void TC002(String ENV){
 		Testing test= new Testing(ENV, brandName,"4VClaim");
@@ -81,7 +81,7 @@ public class TC_Elephant {
 	// --------------------------------------------------------------------------------------
 
 	//TC003
-	@Test(enabled= false,priority = 5, description="4V Claim")
+	@Test(enabled= true,priority = 5, description="4V Claim")
 	@Parameters("ENV")
 	public void TC003(String ENV){
 		Testing test= new Testing(ENV, brandName,"");
@@ -98,7 +98,7 @@ public class TC_Elephant {
 	// --------------------------------------------------------------------------------------
 	@Test(enabled = true, priority = 5, description = "Create_Claim_without_login")
 	@Parameters("ENV")
-	public void TC006(String ENV) throws Throwable {
+	public void TC004(String ENV) throws Throwable {
 
 		Testing test = new Testing(ENV, brandName, "Create_Claim_without_login");
 		try {
@@ -118,7 +118,9 @@ public class TC_Elephant {
 		} finally {
 			test.tearDown();
 		}
-	}
+	}// closing TC004 method
+
+	// --------------------------------------------------------------------------------------
 
 
 }
