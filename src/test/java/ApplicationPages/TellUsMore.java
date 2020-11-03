@@ -44,7 +44,8 @@ public class TellUsMore {
 	@FindBy(id="city")
     public WebElement textbox_City;
 	
-	@FindBy(xpath="//mat-label[contains(text(),'State')]//ancestor::label")
+	
+	@FindBy(xpath="//mat-select[contains(@name,'State')]")
     public WebElement dropdown_State;
 	
 	@FindBy(xpath="//span[contains(text(),'TX')]")
