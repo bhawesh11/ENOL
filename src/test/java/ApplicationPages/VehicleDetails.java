@@ -11,7 +11,7 @@ public class VehicleDetails {
     @FindBy(xpath= "(//div//input[contains(@name,'Vin')])[1]")
     public WebElement textbox_VinNo;
 
-    @FindBy(xpath= "//div//input[contains(@name,'DoNotHaveVin')]")
+    @FindBy(xpath= "//div//input[contains(@name,'DoNotHaveVin')]/ancestor::div[1]")
     public WebElement checkbox_DontHaveVin;
 
     @FindBy(xpath= "//input[contains(@id,'txtYear')]")
@@ -26,9 +26,9 @@ public class VehicleDetails {
     // Will be used for both Make and Model
     public String dropdown_SelectMakeModel= "//mat-option//span[contains(text(),'{0}')]"; // Replace the Car Make or Model with {0}
 
-    public String btn_WhatHappend= "//div//label[contains(text(),'{0}')]"; // Replace the value with {0}
+    public String btn_WhatHappend= "//div//label[contains(text(),'{0}')]/ancestor::div[1]/input[1]"; // Replace the value with {0}
 
-    public String btn_WhatHappendType= "//div//label[contains(text(),'{0}')]"; // Replace the value with {0}
+    public String btn_WhatHappendType= "//div//label[contains(text(),'{0}')]/ancestor::div[1]/input[1]"; // Replace the value with {0}
 
     @FindBy(xpath= "(//div//input[contains(@name,'FloodWaterType')])[1]")
     public WebElement btn_SaltWater;
@@ -36,11 +36,11 @@ public class VehicleDetails {
     @FindBy(xpath= "(//div//input[contains(@name,'FloodWaterType')])[2]")
     public WebElement btn_FreshWater;
 
-    public String btn_MostDamage= "//label[contains(@for,'vehicleImpactPoint')]/child::span[contains(text(),'{0}')]";
+    public String btn_MostDamage= "//label[contains(@for,'vehicleImpactPoint')]/child::span[contains(text(),'{0}')]/ancestor::div[1]/input[1]";
 
-    public String btn_Drivable = "//label[contains(@for,'drivable')]/child::span[contains(text(),'{0}')]"; // Replace the Yes/No with {0}
+    public String btn_Drivable = "//label[contains(@for,'drivable')]/child::span[contains(text(),'{0}')]/ancestor::div[1]/input[1]"; // Replace the Yes/No with {0}
 
-    public String btn_Towed = "//label[contains(@for,'towed')]/child::span[contains(text(),'{0}')]";
+    public String btn_Towed = "//label[contains(@for,'towed')]/child::span[contains(text(),'{0}')]/ancestor::div[1]/input[1]";
 
     @FindBy(xpath= "//input[contains(@id,'AddressLine1')]")
     public WebElement textbox_TowingAddress;
@@ -56,7 +56,7 @@ public class VehicleDetails {
 
     public String dropdownlist_StateName= "//mat-option//span[contains(text(),'{0}')]";
 
-    public String btn_AirbagsDeployed = "//label[contains(@for,'airbagsDeployed')]/child::span[contains(text(),'{0}')]";
+    public String btn_AirbagsDeployed = "//label[contains(@for,'airbagsDeployed')]/child::span[contains(text(),'{0}')]/ancestor::div[1]/input[1]";
 
     @FindBy(xpath= "//span[text()='Next']")
     public WebElement btn_Next;
