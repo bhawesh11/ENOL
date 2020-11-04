@@ -12,7 +12,7 @@ public class STC_ThankyouPage {
 		test.setPage(ThankyouPage.class);
 		ThankyouPage thankyoupage =(ThankyouPage) PageFactory.initElements(test.driver, test.getPage());
 		String ClaimNo = test.webFunctions().readInfo(test, thankyoupage.text_ClaimNo);
-		System.out.println(ClaimNo);
+		test.getLogger().info("Claim Number : " +ClaimNo);
 		test.getLogger().info("Claim Sucessfully Registered");
 		
 	}

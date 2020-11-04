@@ -12,7 +12,7 @@ public class STC_DriverPassengerDetails {
 	    DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver, test.getPage());
 	    test.webFunctions().staticWait(4000);
 	    test.webFunctions().click(test,driverPassengerDetails.btn_DriverPresent,test.getTestData("DriversPassenger.DriverPresent"));
-	    test.webFunctions().click(test,driverPassengerDetails.btn_DriverAsPolicyHolder,test.getTestData("DriversPassenger.DriverAsPolicyHolder"));
+	    test.webFunctions().click(test,driverPassengerDetails.btn_DriversAtTimeOfIncident);
 	    try{
 	        if(driverPassengerDetails.textbox_DriverFirstName.isDisplayed()==true){
 	            test.webFunctions().click(test,driverPassengerDetails.btn_DriverAsPolicyHolder,test.getTestData("DriversPassenger.DriverAsPolicyHolder"));
@@ -34,7 +34,7 @@ public class STC_DriverPassengerDetails {
 	        }
 	    }catch (Exception e){ }
 	    test.webFunctions().click(test,driverPassengerDetails.btn_DriverInjuredYes);
-	    test.webFunctions().type(test,driverPassengerDetails.textarea_DriverInjuryDescription,test.getTestData("DriversPassenger.InjuryDescription"));
+	    test.webFunctions().type(test,driverPassengerDetails.textarea_DriverInjuryDescription,test.getTestData("DriversPassenger.DriverInjuryDescription"));
 	}
 
     public void driverNotPresent(Testing test)

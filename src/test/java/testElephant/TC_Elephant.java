@@ -48,14 +48,25 @@ public class TC_Elephant {
 
 
 	// TC001
-	@Test(enabled = true, priority = 5, description = "Simple Claim")
+	@Test(enabled = true, priority = 5, description = "Create_Claim_With_Login")
 	@Parameters("ENV")
 	public void TC001(String ENV) {
 
-		Testing test = new Testing(ENV, brandName, "SimpleClaim");
+		Testing test = new Testing(ENV, brandName, "Create_Claim_With_Login");
 		try {
 
-			stc_WitnessPolice.witnessPolice(test);
+			stc_launchPage.clickLogin(test);
+			stc_login.login(test);
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_Login(test);
+			stc_tellUsMore.TellUsMore_withLogin(test);
+			stc_vehicleDetails.vehicleInvolvedWithVin(test);
+			stc_driverPassengerDetails.driverPresent(test);
+			stc_driverPassengerDetails.passengerNotPresent(test);
+			stc_driverPassengerDetails.anotherVehicleNotInvolved(test);
+			stc_WitnessPolice.witnessPolice_No(test);
+			stc_contactInformation.contactInformationPage(test);
+			stc_thankyouPage.getClaimNo(test);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -34,6 +34,7 @@ public class Database {
 				"AND d.BrandId = b.BrandId\n" +
 				"AND b.BrandName = ?\n" +
 				"AND a.AppName='CSP'\n" +
+				"AND a.AppName='FNOL'\n" +
 				"AND s.ScriptName= ?";
 		try {
 
