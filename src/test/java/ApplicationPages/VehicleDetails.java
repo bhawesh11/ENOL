@@ -5,12 +5,12 @@ import org.openqa.selenium.support.FindBy;
 
 public class VehicleDetails {
 
-    @FindBy(xpath= "(//div//input[contains(@id,'moved-col')][1]")
+    @FindBy(xpath= "(//div//input[contains(@id,'moved-col')][1])")
     public WebElement btn_PersonalVehicle;
 	
     @FindBy(xpath= "(//input[@formcontrolname='VehicleId'])[1]")
     public WebElement btn_FirstVehicle;
-    
+  
     @FindBy(xpath= "(//div//input[contains(@name,'Vin')])[1]")
     public WebElement textbox_VinNo;
 

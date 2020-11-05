@@ -7,13 +7,12 @@ import resources.Testing;
 public class STC_TellUsMore {
 	public void TellUsMore_withLogin(Testing test) {
 
-		 test.setPage(TellUsMore.class);
+		test.setPage(TellUsMore.class);
 		TellUsMore tellUsMore = (TellUsMore) PageFactory.initElements(test.driver, test.getPage());
 
-		 test.webFunctions().click(test, tellUsMore.button_Reporter_FirstOption);
+		test.webFunctions().click(test, tellUsMore.button_Reporter_FirstOption);
 		test.webFunctions().click(test, tellUsMore.button_Location_PHAddress);
-		test.webFunctions().type(test, tellUsMore.textarea_IncidentDescription,
-		test.getTestData("TellUsMore.IncidentDescription"));
+		test.webFunctions().type(test, tellUsMore.textarea_IncidentDescription,test.getTestData("TellUsMore.IncidentDescription"));
 		test.webFunctions().click(test, tellUsMore.button_Next);
 		test.getLogger().info("Tell Us More Page Info entered, navigating to Vehicle Details Page...");
 		}
