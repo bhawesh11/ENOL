@@ -25,6 +25,7 @@ public class STC_LaunchPage {
 	public void clickLogin(Testing test){
         test.setPage(LaunchPage.class);
         LaunchPage launchpage = (LaunchPage) PageFactory.initElements(test.driver, test.getPage());
+        test.webFunctions().staticWait(5000);
         test.webFunctions().click(test, launchpage.btn_Login);
         test.getLogger().info("Clicked on 'Login' button on Launch Page of ENOL");
      }
@@ -55,6 +56,14 @@ public class STC_LaunchPage {
         LaunchPage launchpage = (LaunchPage) PageFactory.initElements(test.driver, test.getPage());
         test.webFunctions().click(test, launchpage.btn_SiteMap);
         test.getLogger().info("Clicked on 'Site Map' button on Launch Page of ENOL");
+     }
+
+     public void clickHomeButton(Testing test){
+         test.setPage(LaunchPage.class);
+         LaunchPage launchpage = (LaunchPage) PageFactory.initElements(test.driver, test.getPage());
+         test.webFunctions().click(test, launchpage.btn_Home);
+         test.getLogger().info("Clicked on 'Home Button'");
+
      }
 	
 	

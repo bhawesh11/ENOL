@@ -28,4 +28,5 @@ public class LaunchPage {
 	
 	@FindBy(id="siteMapUrl")
     public WebElement btn_SiteMap;
+
 }
