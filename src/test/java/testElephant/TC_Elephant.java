@@ -60,7 +60,7 @@ public class TC_Elephant {
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_Login(test);
 			stc_tellUsMore.TellUsMore_withLogin(test);
-			stc_vehicleDetails.vehicleInvolvedWithVin(test);
+			stc_vehicleDetails.vehicleInvolved_Login(test);
 			stc_driverPassengerDetails.driverPresent(test);
 			stc_driverPassengerDetails.passengerNotPresent(test);
 			stc_driverPassengerDetails.anotherVehicleNotInvolved(test);
