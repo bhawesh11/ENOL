@@ -40,7 +40,7 @@ public class STC_IncidentDetails {
         IncidentDetails incidentDetails = (IncidentDetails) PageFactory.initElements(test.driver, test.getPage());
         ActualErrorMessage = test.webFunctions().readInfo(test, incidentDetails.error_IncidentDate);
         test.getLogger().info("Actual Error Message : " + ActualErrorMessage);
-        assertTrue(ActualErrorMessage.equals(test.getTestData("ExpectedErrorMessage")));		
+        assertTrue(ActualErrorMessage.equals(test.getTestData("IncidentDetails.ExpectedErrorMessage")));		
         test.getLogger().info("Assertion Passed, error text is correct...");
      }
 
