@@ -48,7 +48,7 @@ public class TC_Elephant {
 
 
 	// TC001
-	@Test(enabled = true, priority = 5, description = "Create_Claim_With_Login")
+	@Test(enabled = false, priority = 5, description = "Create_Claim_With_Login")
 	@Parameters("ENV")
 	public void TC001(String ENV) {
 
@@ -72,8 +72,10 @@ public class TC_Elephant {
 		}
 	}// closing TC001 method
 
+	// --------------------------------------------------------------------------------------
+
 	//TC002
-	@Test(enabled= true,priority = 5, description="4V Claim")
+	@Test(enabled= false,priority = 5, description="4V Claim")
 	@Parameters("ENV")
 	public void TC002(String ENV){
 		Testing test= new Testing(ENV, brandName,"4VClaim");
@@ -92,7 +94,7 @@ public class TC_Elephant {
 	// --------------------------------------------------------------------------------------
 
 	//TC003
-	@Test(enabled= true,priority = 5, description="4V Claim")
+	@Test(enabled= false,priority = 5, description="4V Claim")
 	@Parameters("ENV")
 	public void TC003(String ENV){
 		Testing test= new Testing(ENV, brandName,"");
@@ -107,7 +109,7 @@ public class TC_Elephant {
 	}// closing TC003 method
 
 	// --------------------------------------------------------------------------------------
-	@Test(enabled = true, priority = 5, description = "Create_Claim_without_login")
+	@Test(enabled = false, priority = 5, description = "Create_Claim_without_login")
 	@Parameters("ENV")
 	public void TC004(String ENV) throws Throwable {
 
@@ -133,5 +135,39 @@ public class TC_Elephant {
 
 	// --------------------------------------------------------------------------------------
 
+	//TC005
+	@Test(enabled= false,priority = 5, description="IncidentDate_Future")
+	@Parameters("ENV")
+	public void TC005(String ENV){
+		Testing test= new Testing(ENV, brandName,"IncidentDate_Future");
+		try{
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_incidentDetails.verifyErrorMessage(test);
+			
+				} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	// closing TC005 method
 
+	// --------------------------------------------------------------------------------------
+
+	//TC006
+	@Test(enabled= true,priority = 5, description="IncidentDate_Out_Effective")
+	@Parameters("ENV")
+	public void TC006(String ENV){
+		Testing test= new Testing(ENV, brandName,"IncidentDate_Out_Effective");
+		try{
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_incidentDetails.verifyErrorMessage(test);
+			
+				} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	// closing TC006 method
+	
+	
 }
