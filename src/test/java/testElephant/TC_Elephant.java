@@ -48,21 +48,34 @@ public class TC_Elephant {
 
 
 	// TC001
-	@Test(enabled = false, priority = 5, description = "Simple Claim")
+	@Test(enabled = false, priority = 5, description = "Create_Claim_With_Login")
 	@Parameters("ENV")
 	public void TC001(String ENV) {
 
-		Testing test = new Testing(ENV, brandName, "SimpleClaim");
+		Testing test = new Testing(ENV, brandName, "Create_Claim_With_Login");
 		try {
 
-			stc_WitnessPolice.witnessPolice(test);
+			stc_launchPage.clickLogin(test);
+			stc_login.login(test);
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_Login(test);
+			stc_tellUsMore.TellUsMore_withLogin(test);
+			stc_vehicleDetails.vehicleInvolved_Login(test);
+			stc_driverPassengerDetails.driverPresent(test);
+			stc_driverPassengerDetails.passengerNotPresent(test);
+			stc_driverPassengerDetails.anotherVehicleNotInvolved(test);
+			stc_WitnessPolice.witnessPolice_No(test);
+			stc_contactInformation.contactInformationPage(test);
+			stc_thankyouPage.getClaimNo(test);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}// closing TC001 method
 
+	// --------------------------------------------------------------------------------------
+
 	//TC002
-	@Test(enabled= true,priority = 5, description="4V Claim")
+	@Test(enabled= false,priority = 5, description="4V Claim")
 	@Parameters("ENV")
 	public void TC002(String ENV){
 		Testing test= new Testing(ENV, brandName,"4VClaim");
@@ -96,4 +109,65 @@ public class TC_Elephant {
 	}// closing TC003 method
 
 	// --------------------------------------------------------------------------------------
+	@Test(enabled = false, priority = 5, description = "Create_Claim_without_login")
+	@Parameters("ENV")
+	public void TC004(String ENV) throws Throwable {
+
+		Testing test = new Testing(ENV, brandName, "Create_Claim_without_login");
+		try {
+
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_tellUsMore.TellUsMore_WithoutLogin(test);
+			stc_vehicleDetails.vehicleInvolvedWithoutVin(test);
+			stc_driverPassengerDetails.driverPresent(test);
+			stc_driverPassengerDetails.passengerNotPresent(test);
+			stc_driverPassengerDetails.anotherVehicleNotInvolved(test);
+			stc_WitnessPolice.witnessPolice_No(test);
+			stc_contactInformation.contactInformationPage(test);
+			stc_thankyouPage.getClaimNo(test);
+		} catch (Throwable e) {
+			throw (e);
+		} finally {
+			test.tearDown();
+		}
+	}// closing TC004 method
+
+	// --------------------------------------------------------------------------------------
+
+	//TC005
+	@Test(enabled= false,priority = 5, description="IncidentDate_Future")
+	@Parameters("ENV")
+	public void TC005(String ENV){
+		Testing test= new Testing(ENV, brandName,"IncidentDate_Future");
+		try{
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_incidentDetails.verifyErrorMessage(test);
+			
+				} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	// closing TC005 method
+
+	// --------------------------------------------------------------------------------------
+
+	//TC006
+	@Test(enabled= true,priority = 5, description="IncidentDate_Out_Effective")
+	@Parameters("ENV")
+	public void TC006(String ENV){
+		Testing test= new Testing(ENV, brandName,"IncidentDate_Out_Effective");
+		try{
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_incidentDetails.verifyErrorMessage(test);
+			
+				} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	// closing TC006 method
+	
+	
 }

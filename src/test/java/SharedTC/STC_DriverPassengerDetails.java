@@ -7,35 +7,35 @@ import resources.Testing;
 
 public class STC_DriverPassengerDetails {
 
-    public void driverPresent(Testing test){
-        test.setPage(DriverPassengerDetails.class);
-        DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver, test.getPage());
-        test.webFunctions().click(test,driverPassengerDetails.btn_DriverPresent,test.getTestData("DriversPassenger.DriverPresent"));
-        try{
-            if(driverPassengerDetails.btn_DriversAtTimeOfIncident.isDisplayed()==true){
-                test.webFunctions().click(test,driverPassengerDetails.btn_DriversAtTimeOfIncident);
-            }
-        }catch (Exception e){ }
-        try{
-            if(driverPassengerDetails.textbox_DriverFirstName.isDisplayed()==true)
-            {
-                test.webFunctions().click(test,driverPassengerDetails.btn_DriverAsPolicyHolder,test.getTestData("DriversPassenger.DriverAsPolicyHolder"));
-                test.webFunctions().type(test,driverPassengerDetails.textbox_DriverFirstName,test.getTestData("DriversPassenger.FirstName"));
-                test.webFunctions().type(test,driverPassengerDetails.textbox_DriverLastName,test.getTestData("DriversPassenger.LastName"));
-                test.webFunctions().type(test,driverPassengerDetails.textbox_DriverDOB,test.getTestData("DriversPassenger.DOB"));
-                test.webFunctions().type(test,driverPassengerDetails.textbox_DriverAddress,test.getTestData("DriversPassenger.Address"));
-                test.webFunctions().type(test,driverPassengerDetails.textbox_DriverCity,test.getTestData("DriversPassenger.City"));
-                test.webFunctions().click(test,driverPassengerDetails.dropdown_DriverState);
-                test.webFunctions().click(test,driverPassengerDetails.dropdown_PassengerStateName,test.getTestData("DriversPassenger.StateName"));
-                test.webFunctions().type(test,driverPassengerDetails.textbox_DriverPostalCode,test.getTestData("DriversPassenger.PostalCode"));
-                test.webFunctions().type(test,driverPassengerDetails.textbox_DriverPhone,test.getTestData("DriversPassenger.Phone"));
-                test.webFunctions().type(test,driverPassengerDetails.textbox_DriverPostalCode,test.getTestData("DriversPassenger.PostalCode"));
-            }
-        }catch (Exception e){ }
-
-        test.webFunctions().click(test,driverPassengerDetails.btn_DriverInjuredYes);
-        test.webFunctions().type(test,driverPassengerDetails.textarea_DriverInjuryDescription,test.getTestData("DriversPassenger.InjuryDescription"));
-    }
+	public void driverPresent(Testing test){
+	    test.setPage(DriverPassengerDetails.class);
+	    DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver, test.getPage());
+	    test.webFunctions().staticWait(4000);
+	    test.webFunctions().click(test,driverPassengerDetails.btn_DriverPresent,test.getTestData("DriversPassenger.DriverPresent"));
+	    test.webFunctions().click(test,driverPassengerDetails.btn_DriversAtTimeOfIncident);
+	    try{
+	        if(driverPassengerDetails.textbox_DriverFirstName.isDisplayed()==true){
+	            test.webFunctions().click(test,driverPassengerDetails.btn_DriverAsPolicyHolder,test.getTestData("DriversPassenger.DriverAsPolicyHolder"));
+	        }
+	    }catch (Exception e){ }
+	    try{
+	        if(driverPassengerDetails.textbox_DriverFirstName.isDisplayed()==true)
+	        {
+	            test.webFunctions().type(test,driverPassengerDetails.textbox_DriverFirstName,test.getTestData("DriversPassenger.FirstName"));
+	            test.webFunctions().type(test,driverPassengerDetails.textbox_DriverLastName,test.getTestData("DriversPassenger.LastName"));
+	            test.webFunctions().type(test,driverPassengerDetails.textbox_DriverDOB,test.getTestData("DriversPassenger.DOB"));
+	            test.webFunctions().type(test,driverPassengerDetails.textbox_DriverAddress,test.getTestData("DriversPassenger.Address"));
+	            test.webFunctions().type(test,driverPassengerDetails.textbox_DriverCity,test.getTestData("DriversPassenger.City"));
+	            test.webFunctions().click(test,driverPassengerDetails.dropdown_DriverState);
+	            test.webFunctions().click(test,driverPassengerDetails.dropdown_PassengerStateName,test.getTestData("DriversPassenger.StateName"));
+	            test.webFunctions().type(test,driverPassengerDetails.textbox_DriverPostalCode,test.getTestData("DriversPassenger.PostalCode"));
+	            test.webFunctions().type(test,driverPassengerDetails.textbox_DriverPhone,test.getTestData("DriversPassenger.Phone"));
+	            test.webFunctions().type(test,driverPassengerDetails.textbox_DriverPostalCode,test.getTestData("DriversPassenger.PostalCode"));
+	        }
+	    }catch (Exception e){ }
+	    test.webFunctions().click(test,driverPassengerDetails.btn_DriverInjuredYes);
+	    test.webFunctions().type(test,driverPassengerDetails.textarea_DriverInjuryDescription,test.getTestData("DriversPassenger.DriverInjuryDescription"));
+	}
 
     public void driverNotPresent(Testing test)
     {
@@ -90,9 +90,11 @@ public class STC_DriverPassengerDetails {
 
 
     public void anotherVehicleNotInvolved(Testing test)
-    {
-        test.setPage(AnotherVehicleInvolved.class);
-        AnotherVehicleInvolved anotherVehicleInvolved = (AnotherVehicleInvolved) PageFactory.initElements(test.driver, test.getPage());
+    {           
+        test.setPage(DriverPassengerDetails.class);
+        DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver, test.getPage());
+        test.webFunctions().click(test,driverPassengerDetails.btn_AnotherVehicleInvolved, test.getTestData("DriversPassenger.VehicleInvolved") );
+        test.webFunctions().click(test,driverPassengerDetails.btn_Next);
     }
     public void anotherVehicleInvolved(Testing test)
     {
