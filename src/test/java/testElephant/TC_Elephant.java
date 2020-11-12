@@ -40,6 +40,8 @@ public class TC_Elephant {
 	STC_LaunchPage stc_launchPage = new STC_LaunchPage();
 	STC_WitnessPolice stc_WitnessPolice = new STC_WitnessPolice();
 	STC_TellUsMore stc_tellUsMore = new STC_TellUsMore();
+	STC_LaunchPage stc_launchpage = new STC_LaunchPage();
+	STC_GlassClaimMessage stc_glassclaimmessage = new STC_GlassClaimMessage();
 
 
 	
@@ -134,8 +136,78 @@ public class TC_Elephant {
 	}// closing TC004 method
 
 	// --------------------------------------------------------------------------------------
+//	TC005
+    @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
+    @Parameters("ENV")
+    public void TC005(String ENV) {
 
-	//TC005
+        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessage");
+        try {
+        	stc_launchpage.clickGlassOnlyClaims(test);
+        	stc_glassclaimmessage.verifyGlassClaimMessage(test);
+        } catch (Throwable e) {
+            throw (e);
+        } finally {
+            test.tearDown();
+        }
+    }//closing TC005 method
+
+//TC006
+    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
+    @Parameters("ENV")
+    public void TC006(String ENV) {
+
+    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaim");
+    try {
+    	stc_launchpage.clickAllOtherClaims(test);
+    	stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+    	stc_incidentDetails.verifyErrorMessage(test);
+    } catch (Throwable e) {
+        throw (e);
+    } finally {
+        test.tearDown();
+    }
+}//closing TC006 method
+    
+//	TC007
+    @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
+    @Parameters("ENV")
+    public void TC007(String ENV) {
+
+        Testing test = new Testing(ENV, brandName, "Verify_Glass_Claim_Message");
+        try {
+        	stc_launchpage.clickLogin(test);
+        	stc_login.login(test);
+        	stc_launchpage.clickGlassOnlyClaims(test);
+        	stc_glassclaimmessage.verifyGlassClaimMessage(test);
+        } catch (Throwable e) {
+            throw (e);
+        } finally {
+            test.tearDown();
+        }
+    }//closing TC007 method
+    
+  //TC004
+    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
+    @Parameters("ENV")
+    public void TC008(String ENV) {
+
+    Testing test = new Testing(ENV, brandName, "Verify_Duplicate_Claim");
+    try {
+    	stc_launchpage.clickLogin(test);
+    	stc_login.login(test);
+    	stc_launchpage.clickAllOtherClaims(test);
+    	stc_incidentDetails.fillIncidentDetails_Login(test);
+    	stc_incidentDetails.verifyErrorMessage(test);
+    } catch (Throwable e) {
+        throw (e);
+    } finally {
+        test.tearDown();
+    }
+}//closing TC008 method
+=======
+
+	//TC009
 	@Test(enabled= false,priority = 5, description="IncidentDate_Future")
 	@Parameters("ENV")
 	public void TC005(String ENV){
@@ -149,11 +221,11 @@ public class TC_Elephant {
 			e.printStackTrace();
 		}
 	}
-	// closing TC005 method
+	// closing TC009 method
 
 	// --------------------------------------------------------------------------------------
 
-	//TC006
+	//TC010
 	@Test(enabled= true,priority = 5, description="IncidentDate_Out_Effective")
 	@Parameters("ENV")
 	public void TC006(String ENV){
@@ -167,7 +239,7 @@ public class TC_Elephant {
 			e.printStackTrace();
 		}
 	}
-	// closing TC006 method
+	// closing TC010 method
 	
 	
 }
