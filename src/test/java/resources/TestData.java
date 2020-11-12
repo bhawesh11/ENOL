@@ -1,10 +1,13 @@
 package resources;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.text.ParseException;
+
 
 public class TestData {
 
@@ -90,6 +93,24 @@ public class TestData {
 
         // RETURNING DATE IN STRING
         return reqDate.format(myDate);
+    }
+    
+    public String addDaystoDate(String date) {
+    	 SimpleDateFormat reqDate = new SimpleDateFormat("MM/dd/yyyy");
+    	 Calendar c = Calendar.getInstance();
+    	  try{
+    		   //Setting the date to the given date
+    	         c.setTime(reqDate.parse(date));
+    	        }catch(ParseException e){
+    		    	e.printStackTrace();
+    	 }    	   
+    	//Number of Days to add    	
+    	c.add(Calendar.DAY_OF_MONTH, 2);    	
+    	//Date after adding the days to the given date
+    	String newDate = reqDate.format(c.getTime());     	
+    	//Displaying the new Date after addition of Days
+    	System.out.println("Date after Addition: "+newDate);    	
+    	 return newDate;    	 
     }
     // ---------------------------------------------------------------------
 }// Closing CLASS

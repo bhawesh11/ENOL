@@ -91,6 +91,10 @@ public class Testing {
     public String getDate(int offSet) {
         return td.getDate(offSet);
     }
+    
+    public String getDate(String effectiveDate) {
+        return td.addDaystoDate(effectiveDate);
+    }
 
     public String getRandomString(int length) {
         return td.createRandomString(length);
