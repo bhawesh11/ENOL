@@ -18,7 +18,7 @@ public class DriverPassengerDetails {
     @FindBy(xpath = "(//div//input[contains(@id,'txtLastName')])[1]")
     public WebElement textbox_DriverLastName;
 
-    @FindBy(xpath = "(//div//input[contains(@name,'DateOfBirth')])[1]")    
+    @FindBy(xpath = "(//div//input[contains(@name,'DateOfBirth')])[1]")
     public WebElement textbox_DriverDOB;
 
     @FindBy(xpath = "(//div//input[contains(@id,'AddressLine1')])[1]")
@@ -38,39 +38,34 @@ public class DriverPassengerDetails {
     @FindBy(xpath = "(//div//input[contains(@id,'txtPhone')])[1]")
     public WebElement textbox_DriverPhone;
 
-    @FindBy(xpath = "//label[contains(@for,'areYouInjured')]/child::span[contains(text(),'Yes')]/ancestor::div[1]/input[1]")
+
+    @FindBy(xpath = "(//label[contains(@for,'areYouInjured')]/child::span[contains(text(),'Yes')])[1]/ancestor::div[1]/input[1]")
     public WebElement btn_DriverInjuredYes;
 
     @FindBy(xpath = "(//div//textarea[contains(@id,'injuryDescription')])[1]")
     public WebElement textarea_DriverInjuryDescription;
 
-    public String btn_PassengerPresent=  "//label[contains(@for,'otherPassengerInvolved')]/child::span[contains(text(),'{0}')]/ancestor::div[1]/input[1]"; // Replace the Yes/No with {0}
 
-    @FindBy(xpath = "(//div//input[contains(@id,'txtFirstName')]){0}") // Replace the Passenger Number with {0} (Passenger 2- [2])
-    public WebElement textbox_PassengerFirstName;
+    public String btn_PassengerPresent= "//label[contains(@for,'otherPassengerInvolved')]/child::span[contains(text(),'{0}')][1]/ancestor::div[1]/input[1]"; // Replace the Yes/No with {0}
 
-    @FindBy(xpath = "(//div//input[contains(@id,'txtLastName')]){0}") // Replace the Passenger Number with {0} (Passenger 2- [2])
-    public WebElement textbox_PassengerLastName;
+    public String textbox_PassengerFirstName= "(//div//input[contains(@id,'txtFirstName')])[{0}]"; // Replace the Passenger Number with {0} (Passenger 2- [2])
 
-    @FindBy(xpath = "(//div//input[contains(@id,'DateOfBirth')]){0}")// Replace the Passenger Number with {0} (Passenger 2- [2])
-    public WebElement textbox_PassengerDOB;
+    public String textbox_PassengerLastName= "(//div//input[contains(@id,'txtLastName')])[{0}]"; // Replace the Passenger Number with {0} (Passenger 2- [2])
 
-    @FindBy(xpath = "(//div//input[contains(@id,'AddressLine1')]){0}")// Replace the Passenger Number with {0} (Passenger 2- [2])
-    public WebElement textbox_PassengerAddress;
+    public String textbox_PassengerDOB= "(//div//input[contains(@name,'DateOfBirth')])[{0}]";// Replace the Passenger Number with {0} (Passenger 2- [2])
 
-    @FindBy(xpath = "(//div//input[contains(@id,'city')]){0}") // Replace the Passenger Number with {0} (Passenger 2- [2])
-    public WebElement textbox_PassengerCity;
 
-    @FindBy(xpath = "(//div//mat-select[contains(@name,'State')]){0}") // Replace the Passenger Number with {0} (Passenger 2- [2])
-    public WebElement dropdown_PassengerState;
+    public String textbox_PassengerAddress= "(//div//input[contains(@id,'AddressLine1')])[{0}]";// Replace the Passenger Number with {0} (Passenger 2- [2])
 
-    public String dropdown_PassengerStateName = "//mat-option//span[contains(text(),'{0}')]";  // Replace the StateName with {0}
+    public String textbox_PassengerCity= "(//div//input[contains(@id,'city')])[{0}]"; // Replace the Passenger Number with {0} (Passenger 2- [2])
 
-    @FindBy(xpath = "(//div//input[contains(@id,'PostalCode')]){0}") // Replace the Passenger Number with {0} (Passenger 2- [2])
-    public WebElement textbox_PassengerPostalCode;
+    public String dropdown_PassengerState= "(//div//mat-select[contains(@name,'State')])[{0}]"; // Replace the Passenger Number with {0} (Passenger 2- [2])
 
-    @FindBy(xpath = "(//div//input[contains(@id,'txtPhone')]){0}") // Replace the Passenger Number with {0} (Passenger 2- [2])
-    public WebElement textbox_PassengerPhone;
+    public String dropdown_PassengerStateName = "//mat-option//span[contains(text(),'[{0}]')]";  // Replace the StateName with {0}
+
+    public String textbox_PassengerPostalCode= "(//div//input[contains(@id,'PostalCode')])[{0}]"; // Replace the Passenger Number with {0} (Passenger 2- [2])
+
+    public String textbox_PassengerPhone= "(//div//input[contains(@id,'txtPhone')])[{0}]"; // Replace the Passenger Number with {0} (Passenger 2- [2])
 
     @FindBy(xpath = "(//label[contains(@for,'areYouInjured')]/child::span[contains(text(),'Yes')]){0}") // Replace the Passenger Number with {0} (Passenger 2- [2])
     public WebElement btn_PassengerInjuredYes;
@@ -85,7 +80,8 @@ public class DriverPassengerDetails {
     @FindBy(xpath = "//div//button[contains(@id,'addPassenger')]")
     public WebElement btn_AddAnotherPassenger;
 
-    public String btn_AnotherVehicleInvolved ="//label[contains(@for,'anotherVehicleInvolved')]/child::span[contains(text(),'{0}')]/ancestor::div[1]/input[1]";
+
+    public String btn_AnotherVehicleInvolved ="//label[contains(@for,'anotherVehicleInvolved')]/child::span[contains(text(),'{0}')][1]/ancestor::div[1]/input[1]";
 
     @FindBy(xpath = "//span[text()='Next']/ancestor::button")
     public WebElement btn_Next;

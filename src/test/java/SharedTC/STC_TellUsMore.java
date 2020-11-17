@@ -1,7 +1,7 @@
 package SharedTC;
 
-import org.openqa.selenium.support.PageFactory;
 import ApplicationPages.TellUsMore;
+import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
 
 public class STC_TellUsMore {

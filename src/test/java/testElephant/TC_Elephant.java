@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import resources.Testing;
+
 import java.io.IOException;
 
 //import SharedTC.QuoteAndBind;
@@ -77,7 +78,7 @@ public class TC_Elephant {
 	// --------------------------------------------------------------------------------------
 
 	//TC002
-	@Test(enabled= false,priority = 5, description="4V Claim")
+	@Test(enabled= true,priority = 5, description="4V Claim")
 	@Parameters("ENV")
 	public void TC002(String ENV){
 		Testing test= new Testing(ENV, brandName,"4VClaim");
@@ -96,14 +97,20 @@ public class TC_Elephant {
 	// --------------------------------------------------------------------------------------
 
 	//TC003
-	@Test(enabled= false,priority = 5, description="4V Claim")
+	@Test(enabled= true,priority = 5, description="WithoutVIN")
 	@Parameters("ENV")
 	public void TC003(String ENV){
-		Testing test= new Testing(ENV, brandName,"");
+		Testing test= new Testing(ENV, brandName,"VIN/WithoutVIN");
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 			stc_tellUsMore.TellUsMore_WithoutLogin(test);
+			stc_vehicleDetails.vehicleInvolvedWithoutVin(test);
+			stc_driverPassengerDetails.driverNotPresent(test);
+			stc_driverPassengerDetails.passengerNotPresent(test);
+			stc_driverPassengerDetails.anotherVehicleNotInvolved(test);
+			stc_WitnessPolice.witnessPolice(test);
+			stc_contactInformation.contactInformationPage(test);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -136,10 +143,34 @@ public class TC_Elephant {
 	}// closing TC004 method
 
 	// --------------------------------------------------------------------------------------
-//	TC005
+	//TC005
+	@Test(enabled= true,priority = 5, description="WithVIN")
+	@Parameters("ENV")
+	public void TC005(String ENV){
+		Testing test= new Testing(ENV, brandName,"VIN/WithoutVIN");
+		try{
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_tellUsMore.TellUsMore_WithoutLogin(test);
+			stc_vehicleDetails.vehicleInvolvedWithVin(test);
+			stc_driverPassengerDetails.driverNotPresent(test);
+			stc_driverPassengerDetails.passengerNotPresent(test);
+			stc_driverPassengerDetails.anotherVehicleNotInvolved(test);
+			stc_WitnessPolice.witnessPolice(test);
+			stc_contactInformation.contactInformationPage(test);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}// closing TC005 method
+
+	// --------------------------------------------------------------------------------------
+
+    //TC006
     @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
     @Parameters("ENV")
-    public void TC005(String ENV) {
+    public void TC006(String ENV) {
 
         Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessage");
         try {
@@ -150,12 +181,13 @@ public class TC_Elephant {
         } finally {
             test.tearDown();
         }
-    }//closing TC005 method
+    }//closing TC006 method
 
-//TC006
+	// --------------------------------------------------------------------------------------
+	//TC007
     @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
     @Parameters("ENV")
-    public void TC006(String ENV) {
+    public void TC007(String ENV) {
 
     Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaim");
     try {
@@ -167,12 +199,13 @@ public class TC_Elephant {
     } finally {
         test.tearDown();
     }
-}//closing TC006 method
-    
-//	TC007
+}//closing TC007 method
+	// --------------------------------------------------------------------------------------
+
+	//	TC008
     @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
     @Parameters("ENV")
-    public void TC007(String ENV) {
+    public void TC008(String ENV) {
 
         Testing test = new Testing(ENV, brandName, "Verify_Glass_Claim_Message");
         try {
@@ -185,12 +218,13 @@ public class TC_Elephant {
         } finally {
             test.tearDown();
         }
-    }//closing TC007 method
-    
-  //TC004
+    }//closing TC008 method
+	// --------------------------------------------------------------------------------------
+
+	//TC009
     @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
     @Parameters("ENV")
-    public void TC008(String ENV) {
+    public void TC009(String ENV) {
 
     Testing test = new Testing(ENV, brandName, "Verify_Duplicate_Claim");
     try {
@@ -204,13 +238,13 @@ public class TC_Elephant {
     } finally {
         test.tearDown();
     }
-}//closing TC008 method
-=======
+}//closing TC009 method
+	// --------------------------------------------------------------------------------------
 
-	//TC009
+	//TC0010
 	@Test(enabled= false,priority = 5, description="IncidentDate_Future")
 	@Parameters("ENV")
-	public void TC005(String ENV){
+	public void TC0010(String ENV){
 		Testing test= new Testing(ENV, brandName,"IncidentDate_Future");
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
@@ -221,14 +255,14 @@ public class TC_Elephant {
 			e.printStackTrace();
 		}
 	}
-	// closing TC009 method
+	// closing TC0010 method
 
 	// --------------------------------------------------------------------------------------
 
-	//TC010
+	//TC011
 	@Test(enabled= true,priority = 5, description="IncidentDate_Out_Effective")
 	@Parameters("ENV")
-	public void TC006(String ENV){
+	public void TC011(String ENV){
 		Testing test= new Testing(ENV, brandName,"IncidentDate_Out_Effective");
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
@@ -239,7 +273,47 @@ public class TC_Elephant {
 			e.printStackTrace();
 		}
 	}
-	// closing TC010 method
-	
-	
+	// closing TC011 method
+	// --------------------------------------------------------------------------------------
+
+	//TC0012
+	@Test(enabled= true,priority = 5, description="Driver Present")
+	@Parameters("ENV")
+	public void TC012(String ENV){
+		Testing test= new Testing(ENV, brandName,"DriverPresent");
+		try{
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_tellUsMore.TellUsMore_WithoutLogin(test);
+			stc_vehicleDetails.vehicleInvolvedWithVin(test);
+			stc_driverPassengerDetails.driverPresent(test);
+			stc_driverPassengerDetails.passengerNotPresent(test);
+			stc_driverPassengerDetails.anotherVehicleNotInvolved(test);
+			stc_WitnessPolice.witnessPolice(test);
+			stc_contactInformation.contactInformationPage(test);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}// closing TC012 method
+	// --------------------------------------------------------------------------------------
+
+	//TC013
+	@Test(enabled= true,priority = 5, description="Max Passenger")
+	@Parameters("ENV")
+	public void TC013(String ENV){
+		Testing test= new Testing(ENV, brandName,"MaxPassenger");
+		try{
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_tellUsMore.TellUsMore_WithoutLogin(test);
+			stc_vehicleDetails.vehicleInvolvedWithVin(test);
+			stc_driverPassengerDetails.driverNotPresent(test);
+			stc_driverPassengerDetails.maxPassengerWarningMessage(test);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}// closing TC013 method
 }
+

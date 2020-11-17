@@ -1,7 +1,7 @@
 package SharedTC;
 
-import org.openqa.selenium.support.PageFactory;
 import ApplicationPages.GlassClaim;
+import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
 
 import static org.testng.Assert.assertTrue;
