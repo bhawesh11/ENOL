@@ -5,6 +5,8 @@ import ApplicationPages.DriverPassengerDetails;
 import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
 
+import static org.testng.Assert.assertTrue;
+
 public class STC_DriverPassengerDetails {
 
 
@@ -57,25 +59,37 @@ public class STC_DriverPassengerDetails {
     {
         test.setPage(DriverPassengerDetails.class);
         DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver, test.getPage());
+        test.webFunctions().click(test,driverPassengerDetails.btn_PassengerPresent,test.getTestData("DriversPassenger.PassengerPresent"));
         for(int i=1;i<=8;i++)
         {
-            test.webFunctions().click(test,driverPassengerDetails.btn_PassengerPresent,test.getTestData("DriversPassenger.PassengerPresent"));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerFirstName,test.getTestData("DriversPassenger.Xpath"+i+""),test.getTestData("DriversPassenger.PassengerFirstName"+i+""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerLastName,test.getTestData("DriversPassenger.Xpath"+i+""),test.getTestData("DriversPassenger.PassengerLastName"+i+""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerDOB,test.getTestData("DriversPassenger.Xpath"+i+""),test.getTestData("DriversPassenger.PassengerDOB"+i+""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerAddress,test.getTestData("DriversPassenger.Xpath"+i+""),test.getTestData("DriversPassenger.PassengerAddress"+i+""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerCity,test.getTestData("DriversPassenger.Xpath"+i+""),test.getTestData("DriversPassenger.PassengerCity"+i+""));
-            test.webFunctions().click(test,driverPassengerDetails.dropdown_PassengerState,test.getTestData("DriversPassenger.Xpath"+i+""));
-            test.webFunctions().click(test,driverPassengerDetails.dropdown_DriverStateName,test.getTestData("DriversPassenger.Xpath"+i+""),test.getTestData("DriversPassenger.PassengerStateName"+i+""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPostalCode,test.getTestData("DriversPassenger.Xpath"+i+""),test.getTestData("DriversPassenger.PassengerPostalCode"+i+""));
-            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPhone,test.getTestData("DriversPassenger.Xpath"+i+""),test.getTestData("DriversPassenger.PassengerPhone"+i+""));
-            test.webFunctions().click(test,driverPassengerDetails.btn_PassengerInjuredNo);
+            try{
+                if(driverPassengerDetails.btn_WarningOK.isDisplayed())
+                {
+                    String ActualErrorMessage;
+                    ActualErrorMessage = test.webFunctions().readInfo(test,driverPassengerDetails.text_WarningMessage);
+                    test.getLogger().info("Actual Error Message : " + ActualErrorMessage);
+                    assertTrue(ActualErrorMessage.equals(test.getTestData("MaxPassenger.ExpectedErrorMessage")));
+                    test.getLogger().info("Assertion Passed, error text is correct...");
+                    test.webFunctions().click(test,driverPassengerDetails.btn_WarningOK);
+                    break;
+                }
+            }catch (Exception e){ }
+            System.out.println(Integer.toString(i));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerFirstName,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".FirstName"));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerLastName,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".LastName"));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerDOB,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".DOB"));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerAddress,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".Address"));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerCity,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".City"));
+            test.webFunctions().click(test,driverPassengerDetails.dropdown_PassengerState,Integer.toString(i));
+            System.out.println(test.getTestData("DriversPassenger.Passenger"+i+".StateName"));
+            test.webFunctions().click(test,driverPassengerDetails.dropdown_PassengerStateName,test.getTestData("DriversPassenger.Passenger"+i+".StateName"));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPostalCode,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".PostalCode"));
+            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPhone,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".Phone"));
+            test.webFunctions().click(test,driverPassengerDetails.btn_PassengerInjuredNo,Integer.toString(i));
             test.webFunctions().click(test,driverPassengerDetails.btn_AddAnotherPassenger);
-
         }
         }
     public void anotherVehicleNotInvolved(Testing test)
-
     {           
         test.setPage(DriverPassengerDetails.class);
         DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver, test.getPage());
@@ -89,10 +103,11 @@ public class STC_DriverPassengerDetails {
         AnotherVehicleInvolved anotherVehicleInvolved= (AnotherVehicleInvolved) PageFactory.initElements(test.driver, test.getPage());
         DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver,test.getPage());
 
+        test.webFunctions().click(test,driverPassengerDetails.btn_AnotherVehicleInvolved,test.getTestData("DriversPassenger.VehicleInvolved"));
         test.webFunctions().type(test,anotherVehicleInvolved.textbox_VinNo,test.getTestData("DriversPassenger.VIN"));
         test.webFunctions().type(test,anotherVehicleInvolved.textbox_LicensePlateNumber,test.getTestData("DriversPassenger.PlateNumber"));
-        test.webFunctions().click(test,anotherVehicleInvolved.dropdown_SelectState);
-        test.webFunctions().click(test,anotherVehicleInvolved.dropdown_StateRegistered,test.getTestData("DriversPassenger.StateRegistered"));
+        test.webFunctions().click(test, anotherVehicleInvolved.dropdown_StateRegistered);
+        test.webFunctions().click(test, anotherVehicleInvolved.dropdown_SelectState,test.getTestData("DriversPassenger.SelectState"));
         test.webFunctions().click(test,anotherVehicleInvolved.btn_MostDamage,test.getTestData("DriversPassenger.MostDamaged"));
         test.webFunctions().click(test,anotherVehicleInvolved.btn_Drivable,test.getTestData("DriversPassenger.Drivable"));
         test.webFunctions().click(test,anotherVehicleInvolved.btn_Towed,test.getTestData("DriversPassenger.Towed"));
@@ -102,14 +117,9 @@ public class STC_DriverPassengerDetails {
         test.webFunctions().click(test,driverPassengerDetails.btn_PassengerPresent,test.getTestData("DriversPassenger.PassengerPresent"));
         test.webFunctions().click(test,driverPassengerDetails.btn_AnotherVehicleInvolved,test.getTestData("DriversPassenger.VehicleInvolved"));
     }
-    public void maxVehicleWarningMessage(Testing test)
-    {
-        test.setPage(AnotherVehicleInvolved.class);
-        test.setPage(DriverPassengerDetails.class);
-        AnotherVehicleInvolved anotherVehicleInvolved= (AnotherVehicleInvolved) PageFactory.initElements(test.driver, test.getPage());
-        DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver,test.getPage());
 
     }
 
-}
+
+
 
