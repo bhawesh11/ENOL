@@ -19,7 +19,7 @@ public class STC_GlassClaimMessage {
 	        //String ExpectedGlassClaimMessage = "For all glass claims, we have a specialized team who can resolve this issue quickly. At your convenience, contact us at 1-800-413-8860. We are here to help!"; 
 	        		
 	        test.getLogger().info("Actual Glass Claim Message : "+ActualGlassClaimMessage);
-	        assertTrue(ActualGlassClaimMessage.equals(test.getTestData("GlassClaimsElephant.ExpectedMessage")));
+	        assertTrue(ActualGlassClaimMessage.contains(test.getTestData("GlassClaimsElephant.ExpectedMessage")));
 	        test.getLogger().info("Glass Claim Message and Phone No verified succussfully...");
      }
 

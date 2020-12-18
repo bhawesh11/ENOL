@@ -49,7 +49,6 @@ public class STC_VehicleDetails {
         test.webFunctions().click(test,vehicleDetails.dropdown_Model);
         test.webFunctions().click(test,vehicleDetails.dropdown_SelectMakeModel,test.getTestData("VehicleDetails.Model"));
         test.webFunctions().staticWait(3000);
-        System.out.println(test.getTestData("VehicleDetails.WhatHappened"));
         test.webFunctions().click(test,vehicleDetails.btn_WhatHappend,test.getTestData("VehicleDetails.WhatHappened"));
         test.webFunctions().click(test,vehicleDetails.btn_WhatHappendType,test.getTestData("VehicleDetails.Type"));
         test.webFunctions().click(test,vehicleDetails.btn_MostDamage,test.getTestData("VehicleDetails.MostDamage"));

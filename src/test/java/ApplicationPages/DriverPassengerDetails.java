@@ -66,6 +66,8 @@ public class DriverPassengerDetails {
 
     public String textbox_PassengerPhone= "(//div//input[contains(@id,'txtPhone')])[{0}]"; // Replace the Passenger Number with {0} (Passenger 2- [2])
 
+    public String btn_RemovePassenger="(//button[contains(text(),'Remove Passenger')])[{0}]";
+    
     @FindBy(xpath = "(//label[contains(@for,'areYouInjured')]/child::span[contains(text(),'Yes')]){0}") // Replace the Passenger Number with {0} (Passenger 2- [2])
     public WebElement btn_PassengerInjuredYes;
 

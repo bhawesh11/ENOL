@@ -1,6 +1,8 @@
 package SharedTC;
 
 import ApplicationPages.AnotherVehicleInvolved;
+import ApplicationPages.DriverPassengerDetails;
+
 import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
 
@@ -24,8 +26,8 @@ public class STC_AnotherVehicleInvolved {
             test.webFunctions().click(test, anotherVehicleInvolved.btn_Towed, test.getTestData("DriversPassenger.Towed"));
             test.webFunctions().click(test, anotherVehicleInvolved.btn_AirbagsDeployed, test.getTestData("DriversPassenger.AirbagsDeployed"));
             test.webFunctions().click(test, anotherVehicleInvolved.btn_Next);
-            test.webFunctions().click(test, anotherVehicleInvolved.btn_DriverPresent,test.getTestData("DriversPassenger.DriverPresent"));
-            test.webFunctions().click(test, anotherVehicleInvolved.btn_PassengerPresent, test.getTestData("DriversPassenger.PassengerPresent"));
+            test.webFunctions().click(test, anotherVehicleInvolved.btn_DriverPresent,test.getTestData("DriversPassenger.Vehicle"+i+".DriverPresent"));
+            test.webFunctions().click(test, anotherVehicleInvolved.btn_PassengerPresent, test.getTestData("DriversPassenger.Vehicle"+i+".PassengerPresent"));
             test.webFunctions().click(test, anotherVehicleInvolved.btn_AnotherVehicleInvolved, test.getTestData("DriversPassenger.VehicleInvolved"));
             try{
                 if(anotherVehicleInvolved.text_VehicleWarningMessage.isDisplayed()==true){
@@ -41,5 +43,13 @@ public class STC_AnotherVehicleInvolved {
             catch (Exception e){ }
             test.webFunctions().click(test, anotherVehicleInvolved.btn_Next);
         }
+        
+} 
+    public void anotherVehicleNo(Testing test)
+{           
+    test.setPage(AnotherVehicleInvolved.class);
+    AnotherVehicleInvolved anotherVehicleInvolved= (AnotherVehicleInvolved) PageFactory.initElements(test.driver, test.getPage());
+    test.webFunctions().click(test,anotherVehicleInvolved.btn_AnotherVehicleInvolved,test.getTestData("DriversPassenger.AnotherVehicleInvolved"));
+	test.webFunctions().click(test, anotherVehicleInvolved.btn_Next);
 }
 }

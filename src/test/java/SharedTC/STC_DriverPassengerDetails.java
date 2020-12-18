@@ -81,7 +81,6 @@ public class STC_DriverPassengerDetails {
             test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerAddress,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".Address"));
             test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerCity,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".City"));
             test.webFunctions().click(test,driverPassengerDetails.dropdown_PassengerState,Integer.toString(i));
-            System.out.println(test.getTestData("DriversPassenger.Passenger"+i+".StateName"));
             test.webFunctions().click(test,driverPassengerDetails.dropdown_PassengerStateName,test.getTestData("DriversPassenger.Passenger"+i+".StateName"));
             test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPostalCode,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".PostalCode"));
             test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPhone,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".Phone"));
@@ -89,6 +88,7 @@ public class STC_DriverPassengerDetails {
             test.webFunctions().click(test,driverPassengerDetails.btn_AddAnotherPassenger);
         }
         }
+  
     public void anotherVehicleNotInvolved(Testing test)
     {           
         test.setPage(DriverPassengerDetails.class);
@@ -117,8 +117,27 @@ public class STC_DriverPassengerDetails {
         test.webFunctions().click(test,driverPassengerDetails.btn_PassengerPresent,test.getTestData("DriversPassenger.PassengerPresent"));
         test.webFunctions().click(test,driverPassengerDetails.btn_AnotherVehicleInvolved,test.getTestData("DriversPassenger.VehicleInvolved"));
     }
-
+    public void addLastPassengerDetails(Testing test) 
+    {
+    	        test.setPage(DriverPassengerDetails.class);
+    	        DriverPassengerDetails driverPassengerDetails= (DriverPassengerDetails) PageFactory.initElements(test.driver, test.getPage());
+    	        int i=8;
+    	            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerFirstName,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".FirstName"));
+    	            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerLastName,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".LastName"));
+    	            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerDOB,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".DOB"));
+    	            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerAddress,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".Address"));
+    	            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerCity,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".City"));
+    	            test.webFunctions().click(test,driverPassengerDetails.dropdown_PassengerState,Integer.toString(i));
+    	            test.webFunctions().click(test,driverPassengerDetails.dropdown_PassengerStateName,test.getTestData("DriversPassenger.Passenger"+i+".StateName"));
+    	            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPostalCode,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".PostalCode"));
+    	            test.webFunctions().type(test,driverPassengerDetails.textbox_PassengerPhone,Integer.toString(i),test.getTestData("DriversPassenger.Passenger"+i+".Phone"));
+    	            test.webFunctions().click(test,driverPassengerDetails.btn_PassengerInjuredNo,Integer.toString(i));
+    	            
+    	        }
+    	        
     }
+
+    
 
 
 

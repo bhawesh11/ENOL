@@ -44,6 +44,9 @@ public class AnotherVehicleInvolved {
 
     @FindBy(xpath="//mat-dialog-container//button/span[contains(text(),'Ok')]/ancestor::button[1]")
     public WebElement btn_WarningOK;
+    
+    @FindBy(xpath="//mat-error[contains(text(),' This field is required. ')]")
+    public WebElement text_FieldIsRequired;
 
     @FindBy(xpath = "//span[text()='Next']")
     public WebElement btn_Next;
