@@ -15,7 +15,8 @@ public class STC_IncidentDetails {
         test.webFunctions().type(test, incidentDetails.textbox_IncidentTime, test.getTestData("IncidentTime"));
         test.webFunctions().click(test, incidentDetails.dropdown_AMPM);
         test.webFunctions().click(test, incidentDetails.dropdownValue_AM);
-        test.webFunctions().click(test, incidentDetails.button_VehicleInvolved,test.getTestData("VehicleInvolved"));
+        test.webFunctions().click(test,incidentDetails.button_VehicleInvolved,test.getTestData("IncidentDetails.VehicleInvolved"));
+
         test.webFunctions().click(test, incidentDetails.button_Next);
         test.getLogger().info("Incident Details Info entered, navigating to Vehicle Details Page...");
      }
@@ -23,12 +24,13 @@ public class STC_IncidentDetails {
 	public void fillIncidentDetails_WithoutLogin(Testing test){
 		test.setPage(IncidentDetails.class);
         IncidentDetails incidentDetails = (IncidentDetails) PageFactory.initElements(test.driver, test.getPage());
-        test.webFunctions().type(test, incidentDetails.textbox_PolicyNumber,test.getOutput("Policy Number"));
-        test.webFunctions().type(test, incidentDetails.textbox_IncidentDate, test.getDate(test.getOutput("Effective Date")));
-        test.webFunctions().type(test, incidentDetails.textbox_IncidentTime, test.getTestData("IncidentTime"));
+        test.webFunctions().type(test, incidentDetails.textbox_PolicyNumber,test.getTestData("IncidentDetails.PolicyNumber"));
+        test.webFunctions().type(test, incidentDetails.textbox_IncidentDate, test.getTestData("IncidentDetails.IncidentDate"));
+        test.webFunctions().type(test, incidentDetails.textbox_IncidentTime, test.getTestData("IncidentDetails.IncidentTime"));
         test.webFunctions().click(test, incidentDetails.dropdown_AMPM);
         test.webFunctions().click(test, incidentDetails.dropdownValue_AM);
-        test.webFunctions().click(test, incidentDetails.button_VehicleInvolved,test.getTestData("VehicleInvolved"));
+        test.webFunctions().click(test,incidentDetails.button_VehicleInvolved,test.getTestData("IncidentDetails.VehicleInvolved"));
+
         test.webFunctions().click(test, incidentDetails.button_Next);
         test.getLogger().info("Incident Details Info entered, navigating to Vehicle Details Page...");
      }
@@ -47,10 +49,11 @@ public class STC_IncidentDetails {
     	 String ActualErrorMessage;
          test.setPage(IncidentDetails.class);
          IncidentDetails incidentDetails = (IncidentDetails) PageFactory.initElements(test.driver, test.getPage());
-         ActualErrorMessage = test.webFunctions().readInfo(test, incidentDetails.error_IncidentDate);
+         ActualErrorMessage = test.webFunctions().readInfo(test, incidentDetails.FourVehicle_ClaimMesssage);
          test.getLogger().info("Actual Error Message : " + ActualErrorMessage);
-         assertTrue(ActualErrorMessage.equals(test.getTestData("ExpectedErrorMessage")));		
+         assertTrue(ActualErrorMessage.contains(test.getTestData("IncidentDetails.ExpectedClaimMessage")));
          test.getLogger().info("Assertion Passed, error text is correct...");
+
 
      }
 

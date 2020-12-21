@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import resources.Testing;
+
 import java.io.IOException;
 
 //import SharedTC.QuoteAndBind;
@@ -37,6 +38,7 @@ public class TC_Elephant {
 	STC_TerminationPage stc_terminationPage = new STC_TerminationPage();
 	STC_ThankyouPage stc_thankyouPage = new STC_ThankyouPage();
 	STC_VehicleDetails stc_vehicleDetails = new STC_VehicleDetails();
+	STC_AnotherVehicleInvolved stc_anotherVehicleInvolved = new STC_AnotherVehicleInvolved();
 	STC_LaunchPage stc_launchPage = new STC_LaunchPage();
 	STC_WitnessPolice stc_WitnessPolice = new STC_WitnessPolice();
 	STC_TellUsMore stc_tellUsMore = new STC_TellUsMore();
@@ -50,7 +52,7 @@ public class TC_Elephant {
 
 
 	// TC001
-	@Test(enabled = false, priority = 5, description = "Create_Claim_With_Login")
+	@Test(enabled = true, priority = 5, description = "Create_Claim_With_Login")
 	@Parameters("ENV")
 	public void TC001(String ENV) {
 
@@ -69,26 +71,30 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice_No(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Throwable e) {
+			throw (e);
+		} finally {
+			test.tearDown();
 		}
 	}// closing TC001 method
 
 	// --------------------------------------------------------------------------------------
 
 	//TC002
-	@Test(enabled= false,priority = 5, description="4V Claim")
+	@Test(enabled= true,priority = 5, description="Verify Four Vehicle Termination")
 	@Parameters("ENV")
 	public void TC002(String ENV){
-		Testing test= new Testing(ENV, brandName,"4VClaim");
+		Testing test= new Testing(ENV, brandName,"VerifyFourVehicleTermination");
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 			stc_incidentDetails.fourVehicleClaimMessage(test);
 			stc_launchPage.clickHomeButton(test);
 
-				} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Throwable e) {
+			throw (e);
+		} finally {
+			test.tearDown();
 		}
 	}
 	// closing TC002 method
@@ -96,22 +102,30 @@ public class TC_Elephant {
 	// --------------------------------------------------------------------------------------
 
 	//TC003
-	@Test(enabled= false,priority = 5, description="4V Claim")
+	@Test(enabled= true,priority = 5, description="Create Claim Without VIN")
 	@Parameters("ENV")
 	public void TC003(String ENV){
-		Testing test= new Testing(ENV, brandName,"");
+		Testing test= new Testing(ENV, brandName,"CreateClaimWithoutVIN");
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 			stc_tellUsMore.TellUsMore_WithoutLogin(test);
-
-		} catch (Exception e) {
-			e.printStackTrace();
+			stc_vehicleDetails.vehicleInvolvedWithoutVin(test);
+			stc_driverPassengerDetails.driverNotPresent(test);
+			stc_driverPassengerDetails.passengerNotPresent(test);
+			stc_driverPassengerDetails.anotherVehicleNotInvolved(test);
+			stc_WitnessPolice.witnessPolice(test);
+			stc_contactInformation.contactInformationPage(test);
+			stc_thankyouPage.getClaimNo(test);
+		} catch (Throwable e) {
+			throw (e);
+		} finally {
+			test.tearDown();
 		}
 	}// closing TC003 method
 
 	// --------------------------------------------------------------------------------------
-	@Test(enabled = false, priority = 5, description = "Create_Claim_without_login")
+	@Test(enabled = true, priority = 5, description = "Create_Claim_without_login")
 	@Parameters("ENV")
 	public void TC004(String ENV) throws Throwable {
 
@@ -136,10 +150,36 @@ public class TC_Elephant {
 	}// closing TC004 method
 
 	// --------------------------------------------------------------------------------------
-//	TC005
+	//TC005
+	@Test(enabled= true,priority = 5, description="WithVIN")
+	@Parameters("ENV")
+	public void TC005(String ENV){
+		Testing test= new Testing(ENV, brandName,"VIN/WithoutVIN");
+		try{
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_tellUsMore.TellUsMore_WithoutLogin(test);
+			stc_vehicleDetails.vehicleInvolvedWithVin(test);
+			stc_driverPassengerDetails.driverNotPresent(test);
+			stc_driverPassengerDetails.passengerNotPresent(test);
+			stc_driverPassengerDetails.anotherVehicleNotInvolved(test);
+			stc_WitnessPolice.witnessPolice(test);
+			stc_contactInformation.contactInformationPage(test);
+			stc_thankyouPage.getClaimNo(test);
+
+		} catch (Throwable e) {
+			throw (e);
+		} finally {
+			test.tearDown();
+		}
+	}// closing TC005 method
+
+	// --------------------------------------------------------------------------------------
+
+    //TC006
     @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
     @Parameters("ENV")
-    public void TC005(String ENV) {
+    public void TC006(String ENV) {
 
         Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessage");
         try {
@@ -150,12 +190,13 @@ public class TC_Elephant {
         } finally {
             test.tearDown();
         }
-    }//closing TC005 method
+    }//closing TC006 method
 
-//TC006
+	// --------------------------------------------------------------------------------------
+	//TC007
     @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
     @Parameters("ENV")
-    public void TC006(String ENV) {
+    public void TC007(String ENV) {
 
     Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaim");
     try {
@@ -167,12 +208,13 @@ public class TC_Elephant {
     } finally {
         test.tearDown();
     }
-}//closing TC006 method
-    
-//	TC007
+}//closing TC007 method
+	// --------------------------------------------------------------------------------------
+
+	//	TC008
     @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
     @Parameters("ENV")
-    public void TC007(String ENV) {
+    public void TC008(String ENV) {
 
         Testing test = new Testing(ENV, brandName, "Verify_Glass_Claim_Message");
         try {
@@ -185,12 +227,13 @@ public class TC_Elephant {
         } finally {
             test.tearDown();
         }
-    }//closing TC007 method
-    
-  //TC004
+    }//closing TC008 method
+	// --------------------------------------------------------------------------------------
+
+	//TC009
     @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
     @Parameters("ENV")
-    public void TC008(String ENV) {
+    public void TC009(String ENV) {
 
     Testing test = new Testing(ENV, brandName, "Verify_Duplicate_Claim");
     try {
@@ -204,42 +247,115 @@ public class TC_Elephant {
     } finally {
         test.tearDown();
     }
-}//closing TC008 method
-=======
+}//closing TC009 method
+	// --------------------------------------------------------------------------------------
 
-	//TC009
-	@Test(enabled= false,priority = 5, description="IncidentDate_Future")
+	//TC0010
+	@Test(enabled= true,priority = 5, description="IncidentDate_Future")
 	@Parameters("ENV")
-	public void TC005(String ENV){
+	public void TC0010(String ENV){
 		Testing test= new Testing(ENV, brandName,"IncidentDate_Future");
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 			stc_incidentDetails.verifyErrorMessage(test);
 			
-				} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Throwable e) {
+			throw (e);
+		} finally {
+			test.tearDown();
 		}
 	}
-	// closing TC009 method
+	// closing TC0010 method
 
 	// --------------------------------------------------------------------------------------
 
-	//TC010
+	//TC011
 	@Test(enabled= true,priority = 5, description="IncidentDate_Out_Effective")
 	@Parameters("ENV")
-	public void TC006(String ENV){
+	public void TC011(String ENV){
 		Testing test= new Testing(ENV, brandName,"IncidentDate_Out_Effective");
-		try{
+		try{			
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 			stc_incidentDetails.verifyErrorMessage(test);
 			
-				} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Throwable e) {
+			throw (e);
+		} finally {
+			test.tearDown();
 		}
 	}
-	// closing TC010 method
+	// closing TC011 method
+	// --------------------------------------------------------------------------------------
+
+	//TC0012
+	@Test(enabled= true,priority = 5, description="Create Claim With Max Details")
+	@Parameters("ENV")
+	public void TC012(String ENV){
+		Testing test= new Testing(ENV, brandName,"CreateClaimWithMaxDetails");
+		try{
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_tellUsMore.TellUsMore_WithoutLogin(test);
+			stc_vehicleDetails.vehicleInvolvedWithVin(test);
+			stc_driverPassengerDetails.driverPresent(test);
+			stc_driverPassengerDetails.maxPassengerWarningMessage(test);
+			stc_driverPassengerDetails.addLastPassengerDetails(test);
+			stc_anotherVehicleInvolved.maxVehicleWarningMessage(test);
+			stc_anotherVehicleInvolved.anotherVehicleNo(test);
+			stc_WitnessPolice.witnessPolice(test);
+			stc_contactInformation.contactInformationPage(test);
+			stc_thankyouPage.getClaimNo(test);
+		} catch (Throwable e) {
+			throw (e);
+		} finally {
+			test.tearDown();
+		}
 	
-	
+	}// closing TC012 method
+	// --------------------------------------------------------------------------------------
+
+	//TC013
+	@Test(enabled= true,priority = 5, description="Max Passenger")
+	@Parameters("ENV")
+	public void TC013(String ENV){
+		Testing test= new Testing(ENV, brandName,"VerifyMaxPassengerLimit");
+		try{
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_tellUsMore.TellUsMore_WithoutLogin(test);
+			stc_vehicleDetails.vehicleInvolvedWithVin(test);
+			stc_driverPassengerDetails.driverNotPresent(test);
+			stc_driverPassengerDetails.maxPassengerWarningMessage(test);
+			stc_launchPage.clickHomeButton(test);
+
+		} catch (Throwable e) {
+			throw (e);
+		} finally {
+			test.tearDown();
+		}
+	}// closing TC0143method
+	//TC014
+	@Test(enabled= true,priority = 5, description="Max Vehicle Alert")
+	@Parameters("ENV")
+	public void TC014(String ENV){
+		Testing test= new Testing(ENV, brandName,"VerifyMaxVehicleLimit");
+		try{
+			stc_launchPage.clickAllOtherClaims(test);
+			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_tellUsMore.TellUsMore_WithoutLogin(test);
+			stc_vehicleDetails.vehicleInvolvedWithVin(test);
+			stc_driverPassengerDetails.driverNotPresent(test);
+			stc_driverPassengerDetails.passengerNotPresent(test);
+			stc_anotherVehicleInvolved.maxVehicleWarningMessage(test);
+			stc_launchPage.clickHomeButton(test);
+		} catch (Throwable e) {
+			throw (e);
+		} finally {
+			test.tearDown();
+		}
+	}// closing TC014 method
+
 }
+

@@ -29,4 +29,7 @@ public class LaunchPage {
 	@FindBy(id="siteMapUrl")
     public WebElement btn_SiteMap;
 
+	@FindBy(xpath="//mat-dialog-container//button/span[contains(text(),'Ok')]")
+    public WebElement btn_LeavePage;
+
 }

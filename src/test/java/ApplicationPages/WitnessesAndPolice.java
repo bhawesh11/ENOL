@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class WitnessesAndPolice {
 
+	@FindBy(xpath="//mat-radio-group[@formcontrolname='witnessesRadio']/mat-radio-button[1]")
 	public WebElement btn_WitnessesYes;
 
 	@FindBy(xpath = "//mat-radio-group[@formcontrolname='witnessesRadio']/mat-radio-button[2]")
@@ -54,3 +55,6 @@ public class WitnessesAndPolice {
 	@FindBy(xpath = "//span[text()='Next']/ancestor::button[1]")
 	public WebElement btn_Next;
 }
+
+
+
