@@ -10,7 +10,7 @@ public class DriverPassengerDetails {
     public String btn_DriverAsPolicyHolder = "//label[contains(@for,'sameAsPolicyHolder')]/child::span[contains(text(),'{0}')]/ancestor::div[1]/input[1]"; // Replace the Yes/No with {0}
 
     @FindBy(xpath = "(//mat-radio-button[contains(@name,'DriverId')])[1]")
-    public WebElement btn_DriversAtTimeOfIncident;
+    public WebElement btn_SelectDriverName;
 
     @FindBy(xpath = "(//div//input[contains(@id,'txtFirstName')])[1]")
     public WebElement textbox_DriverFirstName;

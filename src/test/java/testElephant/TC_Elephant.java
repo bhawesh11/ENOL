@@ -54,9 +54,9 @@ public class TC_Elephant {
 	// TC001
 	@Test(enabled = true, priority = 5, description = "Create_Claim_With_Login")
 	@Parameters("ENV")
-	public void TC001(String ENV) {
+	public void TC001(String ENV) throws Throwable {
 
-		Testing test = new Testing(ENV, brandName, "Create_Claim_With_Login");
+		Testing test = new Testing(ENV, brandName, "Create_Claim_With_Login", "1D1V" );
 		try {
 
 			stc_launchPage.clickLogin(test);
@@ -83,8 +83,8 @@ public class TC_Elephant {
 	//TC002
 	@Test(enabled= true,priority = 5, description="Verify Four Vehicle Termination")
 	@Parameters("ENV")
-	public void TC002(String ENV){
-		Testing test= new Testing(ENV, brandName,"VerifyFourVehicleTermination");
+	public void TC002(String ENV) throws Throwable {
+		Testing test= new Testing(ENV, brandName,"VerifyFourVehicleTermination", "1D1V" );
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -104,8 +104,8 @@ public class TC_Elephant {
 	//TC003
 	@Test(enabled= true,priority = 5, description="Create Claim Without VIN")
 	@Parameters("ENV")
-	public void TC003(String ENV){
-		Testing test= new Testing(ENV, brandName,"CreateClaimWithoutVIN");
+	public void TC003(String ENV) throws Throwable {
+		Testing test= new Testing(ENV, brandName,"CreateClaimWithoutVIN", "1D1V" );
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -129,7 +129,7 @@ public class TC_Elephant {
 	@Parameters("ENV")
 	public void TC004(String ENV) throws Throwable {
 
-		Testing test = new Testing(ENV, brandName, "Create_Claim_without_login");
+		Testing test = new Testing(ENV, brandName, "Create_Claim_without_login", "1D1V" );
 		try {
 
 			stc_launchPage.clickAllOtherClaims(test);
@@ -153,8 +153,8 @@ public class TC_Elephant {
 	//TC005
 	@Test(enabled= true,priority = 5, description="WithVIN")
 	@Parameters("ENV")
-	public void TC005(String ENV){
-		Testing test= new Testing(ENV, brandName,"VIN/WithoutVIN");
+	public void TC005(String ENV) throws Throwable {
+		Testing test= new Testing(ENV, brandName,"VIN/WithoutVIN", "1D1V" );
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -179,9 +179,9 @@ public class TC_Elephant {
     //TC006
     @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
     @Parameters("ENV")
-    public void TC006(String ENV) {
+    public void TC006(String ENV) throws Throwable {
 
-        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessage");
+        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessage", "1D1V" );
         try {
         	stc_launchpage.clickGlassOnlyClaims(test);
         	stc_glassclaimmessage.verifyGlassClaimMessage(test);
@@ -196,9 +196,9 @@ public class TC_Elephant {
 	//TC007
     @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
     @Parameters("ENV")
-    public void TC007(String ENV) {
+    public void TC007(String ENV) throws Throwable {
 
-    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaim");
+    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaim", "1D1V" );
     try {
     	stc_launchpage.clickAllOtherClaims(test);
     	stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -214,9 +214,9 @@ public class TC_Elephant {
 	//	TC008
     @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
     @Parameters("ENV")
-    public void TC008(String ENV) {
+    public void TC008(String ENV) throws Throwable {
 
-        Testing test = new Testing(ENV, brandName, "Verify_Glass_Claim_Message");
+        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessageWithLogin", "1D1V" );
         try {
         	stc_launchpage.clickLogin(test);
         	stc_login.login(test);
@@ -233,9 +233,9 @@ public class TC_Elephant {
 	//TC009
     @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
     @Parameters("ENV")
-    public void TC009(String ENV) {
+    public void TC009(String ENV) throws Throwable {
 
-    Testing test = new Testing(ENV, brandName, "Verify_Duplicate_Claim");
+    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaimWithLogin", "1D1V" );
     try {
     	stc_launchpage.clickLogin(test);
     	stc_login.login(test);
@@ -253,8 +253,8 @@ public class TC_Elephant {
 	//TC0010
 	@Test(enabled= true,priority = 5, description="IncidentDate_Future")
 	@Parameters("ENV")
-	public void TC0010(String ENV){
-		Testing test= new Testing(ENV, brandName,"IncidentDate_Future");
+	public void TC0010(String ENV) throws Throwable {
+		Testing test= new Testing(ENV, brandName,"IncidentDate_Future", "1D1V" );
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -273,8 +273,8 @@ public class TC_Elephant {
 	//TC011
 	@Test(enabled= true,priority = 5, description="IncidentDate_Out_Effective")
 	@Parameters("ENV")
-	public void TC011(String ENV){
-		Testing test= new Testing(ENV, brandName,"IncidentDate_Out_Effective");
+	public void TC011(String ENV) throws Throwable {
+		Testing test= new Testing(ENV, brandName,"IncidentDate_Out_Effective", "1D1V" );
 		try{			
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -292,8 +292,8 @@ public class TC_Elephant {
 	//TC0012
 	@Test(enabled= true,priority = 5, description="Create Claim With Max Details")
 	@Parameters("ENV")
-	public void TC012(String ENV){
-		Testing test= new Testing(ENV, brandName,"CreateClaimWithMaxDetails");
+	public void TC012(String ENV) throws Throwable {
+		Testing test= new Testing(ENV, brandName,"CreateClaimWithMaxDetails", "1D1V" );
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -319,8 +319,8 @@ public class TC_Elephant {
 	//TC013
 	@Test(enabled= true,priority = 5, description="Max Passenger")
 	@Parameters("ENV")
-	public void TC013(String ENV){
-		Testing test= new Testing(ENV, brandName,"VerifyMaxPassengerLimit");
+	public void TC013(String ENV) throws Throwable {
+		Testing test= new Testing(ENV, brandName,"VerifyMaxPassengerLimit", "1D1V" );
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -335,12 +335,14 @@ public class TC_Elephant {
 		} finally {
 			test.tearDown();
 		}
-	}// closing TC0143method
+	}// closing TC013method
+	
+	//----------------------------------------------------------------------------------------
 	//TC014
 	@Test(enabled= true,priority = 5, description="Max Vehicle Alert")
 	@Parameters("ENV")
-	public void TC014(String ENV){
-		Testing test= new Testing(ENV, brandName,"VerifyMaxVehicleLimit");
+	public void TC014(String ENV) throws Throwable {
+		Testing test= new Testing(ENV, brandName,"VerifyMaxVehicleLimit", "1D1V" );
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
