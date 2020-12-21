@@ -52,7 +52,7 @@ public class TC_Apparent {
 	@Parameters("ENV")
 	public void TC001(String ENV) throws Throwable {
 
-		Testing test = new Testing(ENV, brandName, "Create_Claim_With_Login");
+		Testing test = new Testing(ENV, brandName, "Create_Claim_With_Login", "TDA001-1D1V" );
 		try {
 
 			stc_launchPage.clickLogin(test);
@@ -79,7 +79,7 @@ public class TC_Apparent {
 	@Parameters("ENV")
 	public void TC004(String ENV) throws Throwable {
 
-		Testing test = new Testing(ENV, brandName, "Create_Claim_without_login");
+		Testing test = new Testing(ENV, brandName, "Create_Claim_without_login", "TDA001-1D1V" );
 		try {
 
 			stc_launchPage.clickAllOtherClaims(test);
@@ -103,9 +103,9 @@ public class TC_Apparent {
 //		TC005
 	    @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
 	    @Parameters("ENV")
-	    public void TC005(String ENV) {
+	    public void TC005(String ENV) throws Throwable {
 
-	        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessage");
+	        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessage", "TDA001-1D1V" );
 	        try {
 	        	stc_launchpage.clickGlassOnlyClaims(test);
 	        	stc_glassclaimmessage.verifyGlassClaimMessage(test);
@@ -121,9 +121,9 @@ public class TC_Apparent {
 	//TC006
 	    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
 	    @Parameters("ENV")
-	    public void TC006(String ENV) {
+	    public void TC006(String ENV) throws Throwable {
 
-	    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaim");
+	    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaim", "TDA001-1D1V" );
 	    try {
 	    	stc_launchpage.clickAllOtherClaims(test);
 	    	stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -140,9 +140,9 @@ public class TC_Apparent {
 //		TC007
 	    @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message With Login")
 	    @Parameters("ENV")
-	    public void TC007(String ENV) {
+	    public void TC007(String ENV) throws Throwable {
 
-	        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessageWithLogin");
+	        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessageWithLogin", "TDA001-1D1V" );
 	        try {
 	        	stc_launchpage.clickLogin(test);
 	        	stc_login.login(test);
@@ -160,9 +160,9 @@ public class TC_Apparent {
 	  //TC008
 	    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim With Login")
 	    @Parameters("ENV")
-	    public void TC008(String ENV) {
+	    public void TC008(String ENV) throws Throwable {
 
-	    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaimWithLogin");
+	    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaimWithLogin", "TDA001-1D1V" );
 	    try {
 	    	stc_launchpage.clickLogin(test);
 	    	stc_login.login(test);

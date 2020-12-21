@@ -16,7 +16,7 @@ public class Output {
 			}
 			output = new JSONObject(json);
 			output.put("Password", "Passw0rd");
-			output.put("ZIP", "75001");
+			//output.put("ZIP", "75001");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -49,4 +49,19 @@ public class Output {
 		String getOutputs() {
 			return output.toString();
 		}
+		
+	// ----------------------------------------------------------
+		Output(Database db, String brandName, String environment, String dataScriptName) {
+			try {
+				String json = db.getPolicyDetails(brandName, environment, dataScriptName);
+				System.out.println("Test Data JSON : "+json);
+				output = new JSONObject(json);
+				output.put("Password", "Passw0rd");
+				//output.put("ZIP", "75001");
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 }// close Class

@@ -550,4 +550,9 @@ public class WebFunctions {
 
 		return fileName;
 	}
+	
+	//============================================================================
+	public String getTitle(Testing test) {
+    	return test.driver.getTitle();
+    }
 }
