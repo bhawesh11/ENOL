@@ -1,9 +1,7 @@
 package SharedTC;
 
-import org.openqa.selenium.support.PageFactory;
-
-
 import ApplicationPages.LaunchPage;
+import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
 
 public class STC_LaunchPage {
@@ -25,6 +23,7 @@ public class STC_LaunchPage {
 	public void clickLogin(Testing test){
         test.setPage(LaunchPage.class);
         LaunchPage launchpage = (LaunchPage) PageFactory.initElements(test.driver, test.getPage());
+        test.webFunctions().staticWait(5000);
         test.webFunctions().click(test, launchpage.btn_Login);
         test.getLogger().info("Clicked on 'Login' button on Launch Page of ENOL");
      }
@@ -55,6 +54,20 @@ public class STC_LaunchPage {
         LaunchPage launchpage = (LaunchPage) PageFactory.initElements(test.driver, test.getPage());
         test.webFunctions().click(test, launchpage.btn_SiteMap);
         test.getLogger().info("Clicked on 'Site Map' button on Launch Page of ENOL");
+     }
+
+     public void clickHomeButton(Testing test){
+         test.setPage(LaunchPage.class);
+         LaunchPage launchpage = (LaunchPage) PageFactory.initElements(test.driver, test.getPage());
+         test.webFunctions().click(test, launchpage.btn_Home);
+         try{
+             if(launchpage.btn_LeavePage.isDisplayed()==true){
+                 test.webFunctions().click(test,launchpage.btn_LeavePage);
+             }
+         }
+         catch (Exception e){}
+         test.getLogger().info("Clicked on 'Home Button'");
+
      }
 	
 	

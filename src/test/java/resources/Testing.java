@@ -22,7 +22,7 @@ public class Testing {
 //		1. INITIALIZING ATTRIBUTES:
         db = new Database();
         td = new TestData(db, brandName, scriptName);
-        output = new Output(db, brandName, environment);
+        //output = new Output(db, brandName, environment);
         webFunctions = new WebFunctions();
         address = new URL(brandName);
         this.brandName = brandName;
@@ -56,7 +56,7 @@ public class Testing {
     public void tearDown() {
         bf.closeBrowser();
 //        db.insertRecordInDatabase(scriptName, "Elephant");
-        logger.info(output.getOutputs());
+        //logger.info(output.getOutputs());
         
     }
 
@@ -90,6 +90,10 @@ public class Testing {
 
     public String getDate(int offSet) {
         return td.getDate(offSet);
+    }
+    
+    public String getDate(String effectiveDate) {
+        return td.addDaystoDate(effectiveDate);
     }
 
     public String getRandomString(int length) {

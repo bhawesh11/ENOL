@@ -8,7 +8,7 @@ public class Database {
 		if (con == null) {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/qat", "root", "P@ssw0rd");
+				con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/qat", "root", "Passw0rd");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -33,7 +33,7 @@ public class Database {
 				"AND d.ScriptId = s.ScriptId\n" +
 				"AND d.BrandId = b.BrandId\n" +
 				"AND b.BrandName = ?\n" +
-				"AND a.AppName='CSP'\n" +
+				"AND a.AppName='FNOL'\n" +
 				"AND s.ScriptName= ?";
 		try {
 
