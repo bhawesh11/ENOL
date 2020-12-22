@@ -3,12 +3,13 @@ import java.sql.*;
 
 public class Database {
 	static Connection con=null;
+	public int dataId; // This is TestID of our PC data pulled from 'Test' Table.
 
 	private static Connection getConnection() {
 		if (con == null) {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/qat", "root", "Passw0rd");
+				con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/qat", "root", "P@ssw0rd");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -155,4 +156,50 @@ public class Database {
 		}
 		return jsonString;
 	}
+	
+	// ---------------------------------------------------------------------------------------------------
+		// GETS JSON FOR TEST DATA of Specific Script :
+		public String getPolicyDetails(String brandName, String environment, String scriptName) {
+
+			String policyDetails = null;
+			String sql = "SELECT  TestId,Output FROM test WHERE TestId =\r\n"
+					+ "				(SELECT MAX(TestId) FROM application a, test t, brand b, data d, environment e,script s\r\n"
+					+ "				WHERE t.BrandId = b.BrandId AND a.AppId =d.AppId AND e.EnvId = t.EnvId\r\n"
+					+ "				AND t.dataId = d.dataId AND s.ScriptId = d.ScriptId AND b.BrandName = ?\r\n"
+					+ "				AND (a.AppName = 'Policy Center' OR a.appName = 'Quotes') AND e.EnvName = ?\r\n"
+					+ "				AND t.Result = 'PASS' AND s.ScriptName = ? AND NOT t.ClaimCreated = 'Used');";
+			try {
+				java.sql.PreparedStatement stmt = getConnection().prepareStatement(sql);
+				stmt.setString(1, brandName);
+				stmt.setString(2, environment);
+				stmt.setString(3, scriptName);
+				ResultSet rs = stmt.executeQuery();
+				if (rs.next())
+					dataId = rs.getInt(1);
+				policyDetails = rs.getString(2);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return policyDetails;
+		}
+
+		// -------------------------------------------------------------------------------------------------------------
+		// Mark Test Data as Used :
+		public int markOutputUsed() {
+
+			String sql = "UPDATE Test\r\n" + "SET ClaimCreated = 'Used'\r\n" + "WHERE TestId = ?; ";
+			int rows = 0;
+			try {
+				java.sql.PreparedStatement stmt = getConnection().prepareStatement(sql);
+				stmt.setInt(1, dataId);
+
+				rows = stmt.executeUpdate();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return rows;
+
+		}
+
 }
