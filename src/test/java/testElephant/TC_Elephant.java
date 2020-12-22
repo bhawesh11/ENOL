@@ -71,7 +71,10 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice_No(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
+			test.markTestDataUsed();
+			test.markPassed();
 		} catch (Throwable e) {
+			test.markFailed(e.getMessage());
 			throw (e);
 		} finally {
 			test.tearDown();
@@ -90,8 +93,9 @@ public class TC_Elephant {
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 			stc_incidentDetails.fourVehicleClaimMessage(test);
 			stc_launchPage.clickHomeButton(test);
-
+			test.markPassed();
 		} catch (Throwable e) {
+			test.markFailed(e.getMessage());
 			throw (e);
 		} finally {
 			test.tearDown();
@@ -117,7 +121,10 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
+			test.markTestDataUsed();
+			test.markPassed();
 		} catch (Throwable e) {
+			test.markFailed(e.getMessage());
 			throw (e);
 		} finally {
 			test.tearDown();
@@ -142,7 +149,10 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice_No(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
+			test.markTestDataUsed();
+			test.markPassed();
 		} catch (Throwable e) {
+			test.markFailed(e.getMessage());
 			throw (e);
 		} finally {
 			test.tearDown();
@@ -166,8 +176,9 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
-
+			test.markPassed();
 		} catch (Throwable e) {
+			test.markFailed(e.getMessage());
 			throw (e);
 		} finally {
 			test.tearDown();
@@ -185,7 +196,9 @@ public class TC_Elephant {
         try {
         	stc_launchpage.clickGlassOnlyClaims(test);
         	stc_glassclaimmessage.verifyGlassClaimMessage(test);
+        	test.markPassed();
         } catch (Throwable e) {
+        	test.markFailed(e.getMessage());
             throw (e);
         } finally {
             test.tearDown();
@@ -194,7 +207,7 @@ public class TC_Elephant {
 
 	// --------------------------------------------------------------------------------------
 	//TC007
-    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
+    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim", dependsOnMethods= {"TC005"})
     @Parameters("ENV")
     public void TC007(String ENV) throws Throwable {
 
@@ -203,7 +216,9 @@ public class TC_Elephant {
     	stc_launchpage.clickAllOtherClaims(test);
     	stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
     	stc_incidentDetails.verifyErrorMessage(test);
+    	test.markPassed();
     } catch (Throwable e) {
+    	test.markFailed(e.getMessage());
         throw (e);
     } finally {
         test.tearDown();
@@ -222,7 +237,9 @@ public class TC_Elephant {
         	stc_login.login(test);
         	stc_launchpage.clickGlassOnlyClaims(test);
         	stc_glassclaimmessage.verifyGlassClaimMessage(test);
+        	test.markPassed();
         } catch (Throwable e) {
+        	test.markFailed(e.getMessage());
             throw (e);
         } finally {
             test.tearDown();
@@ -231,7 +248,7 @@ public class TC_Elephant {
 	// --------------------------------------------------------------------------------------
 
 	//TC009
-    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
+    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim", dependsOnMethods= {"TC007"})
     @Parameters("ENV")
     public void TC009(String ENV) throws Throwable {
 
@@ -242,7 +259,10 @@ public class TC_Elephant {
     	stc_launchpage.clickAllOtherClaims(test);
     	stc_incidentDetails.fillIncidentDetails_Login(test);
     	stc_incidentDetails.verifyErrorMessage(test);
+    	test.markTestDataUsed();
+		test.markPassed();
     } catch (Throwable e) {
+    	test.markFailed(e.getMessage());
         throw (e);
     } finally {
         test.tearDown();
@@ -259,8 +279,9 @@ public class TC_Elephant {
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 			stc_incidentDetails.verifyErrorMessage(test);
-			
+			test.markPassed();
 		} catch (Throwable e) {
+			test.markFailed(e.getMessage());
 			throw (e);
 		} finally {
 			test.tearDown();
@@ -279,8 +300,9 @@ public class TC_Elephant {
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 			stc_incidentDetails.verifyErrorMessage(test);
-			
+			test.markPassed();
 		} catch (Throwable e) {
+			test.markFailed(e.getMessage());
 			throw (e);
 		} finally {
 			test.tearDown();
@@ -307,7 +329,10 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
+			test.markTestDataUsed();
+			test.markPassed();
 		} catch (Throwable e) {
+			test.markFailed(e.getMessage());
 			throw (e);
 		} finally {
 			test.tearDown();
@@ -329,8 +354,10 @@ public class TC_Elephant {
 			stc_driverPassengerDetails.driverNotPresent(test);
 			stc_driverPassengerDetails.maxPassengerWarningMessage(test);
 			stc_launchPage.clickHomeButton(test);
+			test.markPassed();
 
 		} catch (Throwable e) {
+			test.markFailed(e.getMessage());
 			throw (e);
 		} finally {
 			test.tearDown();
@@ -352,7 +379,9 @@ public class TC_Elephant {
 			stc_driverPassengerDetails.passengerNotPresent(test);
 			stc_anotherVehicleInvolved.maxVehicleWarningMessage(test);
 			stc_launchPage.clickHomeButton(test);
+			test.markPassed();
 		} catch (Throwable e) {
+			test.markFailed(e.getMessage());
 			throw (e);
 		} finally {
 			test.tearDown();

@@ -6,7 +6,7 @@
 		<listener class-name="testNGListners.ITestAnnotation"></listener>
 	</listeners>
 
-	<test name="testElephant">
+	<test name="Elephant FNOL Regression">
 		<parameter name="ENV" value="QA6" />
 		<classes>
 			<class name="testElephant.TC_Elephant"/>			
