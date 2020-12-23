@@ -98,6 +98,10 @@ public class Testing {
     public String getDate(String effectiveDate) {
         return td.addDaystoDate(effectiveDate);
     }
+    
+    public String getLessDate(String effectiveDate){
+    	return td.lessDaystoDate(effectiveDate);
+    }
 
     public String getRandomString(int length) {
         return td.createRandomString(length);

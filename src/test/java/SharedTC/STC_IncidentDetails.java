@@ -36,11 +36,32 @@ public class STC_IncidentDetails {
         test.webFunctions().click(test, incidentDetails.button_Next);
         test.getLogger().info("Incident Details Info entered, navigating to Vehicle Details Page...");
      }
-	
+	public void incidentDate_FutureDate(Testing test) {
+		test.setPage(IncidentDetails.class);
+        IncidentDetails incidentDetails = (IncidentDetails) PageFactory.initElements(test.driver, test.getPage());
+        test.webFunctions().type(test, incidentDetails.textbox_PolicyNumber, test.getOutput("Policy Number"));
+		test.webFunctions().type(test,incidentDetails.textbox_IncidentDate,test.getDate(2));
+		test.webFunctions().type(test, incidentDetails.textbox_IncidentTime,  "1200");
+        test.webFunctions().click(test, incidentDetails.dropdown_AMPM);
+        test.webFunctions().click(test, incidentDetails.dropdownValue_AM);
+        test.webFunctions().click(test,incidentDetails.button_VehicleInvolved,test.getTestData("IncidentDetails.VehicleInvolved"));
+	}
+	public void incidentDate_OutEffect(Testing test) {
+		test.setPage(IncidentDetails.class);
+        IncidentDetails incidentDetails = (IncidentDetails) PageFactory.initElements(test.driver, test.getPage());
+        test.webFunctions().type(test, incidentDetails.textbox_PolicyNumber, test.getOutput("Policy Number"));
+		test.webFunctions().type(test,incidentDetails.textbox_IncidentDate,test.getLessDate(test.getOutput("Effective Date")));
+		test.webFunctions().type(test, incidentDetails.textbox_IncidentTime,  "1200");
+        test.webFunctions().click(test, incidentDetails.dropdown_AMPM);
+        test.webFunctions().click(test, incidentDetails.dropdownValue_AM);
+        test.webFunctions().click(test,incidentDetails.button_VehicleInvolved,test.getTestData("IncidentDetails.VehicleInvolved"));
+        test.webFunctions().click(test, incidentDetails.button_Next);
+	}
 	public void verifyErrorMessage(Testing test){
 		String ActualErrorMessage;
         test.setPage(IncidentDetails.class);
         IncidentDetails incidentDetails = (IncidentDetails) PageFactory.initElements(test.driver, test.getPage());
+        test.webFunctions().staticWait(20);
         ActualErrorMessage = test.webFunctions().readInfo(test, incidentDetails.error_IncidentDate);
         test.getLogger().info("Actual Error Message : " + ActualErrorMessage);
         assertTrue(ActualErrorMessage.equals(test.getTestData("IncidentDetails.ExpectedErrorMessage")));		

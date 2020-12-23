@@ -71,6 +71,8 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice_No(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
+			test.markTestDataUsed();
+			test.markPassed();
 		} catch (Throwable e) {
 			throw (e);
 		} finally {
@@ -90,6 +92,7 @@ public class TC_Elephant {
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 			stc_incidentDetails.fourVehicleClaimMessage(test);
 			stc_launchPage.clickHomeButton(test);
+			test.markPassed();
 
 		} catch (Throwable e) {
 			throw (e);
@@ -117,6 +120,8 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
+			test.markTestDataUsed();
+			test.markPassed();
 		} catch (Throwable e) {
 			throw (e);
 		} finally {
@@ -142,6 +147,8 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice_No(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
+			test.markTestDataUsed();
+			test.markPassed();
 		} catch (Throwable e) {
 			throw (e);
 		} finally {
@@ -151,10 +158,10 @@ public class TC_Elephant {
 
 	// --------------------------------------------------------------------------------------
 	//TC005
-	@Test(enabled= true,priority = 5, description="WithVIN")
+	@Test(enabled= true,priority = 5, description="Create Claim With VIN")
 	@Parameters("ENV")
 	public void TC005(String ENV) throws Throwable {
-		Testing test= new Testing(ENV, brandName,"VIN/WithoutVIN", "1D1V" );
+		Testing test= new Testing(ENV, brandName,"CreateClaimWithVIN", "1D1V" );
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
 			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -166,6 +173,8 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
+			test.markTestDataUsed();
+			test.markPassed();
 
 		} catch (Throwable e) {
 			throw (e);
@@ -185,6 +194,8 @@ public class TC_Elephant {
         try {
         	stc_launchpage.clickGlassOnlyClaims(test);
         	stc_glassclaimmessage.verifyGlassClaimMessage(test);
+        	test.markPassed();
+        	
         } catch (Throwable e) {
             throw (e);
         } finally {
@@ -203,6 +214,7 @@ public class TC_Elephant {
     	stc_launchpage.clickAllOtherClaims(test);
     	stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
     	stc_incidentDetails.verifyErrorMessage(test);
+    	test.markPassed();
     } catch (Throwable e) {
         throw (e);
     } finally {
@@ -222,6 +234,7 @@ public class TC_Elephant {
         	stc_login.login(test);
         	stc_launchpage.clickGlassOnlyClaims(test);
         	stc_glassclaimmessage.verifyGlassClaimMessage(test);
+        	test.markPassed();
         } catch (Throwable e) {
             throw (e);
         } finally {
@@ -242,6 +255,7 @@ public class TC_Elephant {
     	stc_launchpage.clickAllOtherClaims(test);
     	stc_incidentDetails.fillIncidentDetails_Login(test);
     	stc_incidentDetails.verifyErrorMessage(test);
+    	test.markPassed();
     } catch (Throwable e) {
         throw (e);
     } finally {
@@ -257,9 +271,9 @@ public class TC_Elephant {
 		Testing test= new Testing(ENV, brandName,"IncidentDate_Future", "1D1V" );
 		try{
 			stc_launchPage.clickAllOtherClaims(test);
-			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_incidentDetails.incidentDate_FutureDate(test);
 			stc_incidentDetails.verifyErrorMessage(test);
-			
+			test.markPassed();
 		} catch (Throwable e) {
 			throw (e);
 		} finally {
@@ -277,9 +291,9 @@ public class TC_Elephant {
 		Testing test= new Testing(ENV, brandName,"IncidentDate_Out_Effective", "1D1V" );
 		try{			
 			stc_launchPage.clickAllOtherClaims(test);
-			stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+			stc_incidentDetails.incidentDate_OutEffect(test);
 			stc_incidentDetails.verifyErrorMessage(test);
-			
+			test.markPassed();
 		} catch (Throwable e) {
 			throw (e);
 		} finally {
@@ -307,6 +321,8 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
+			test.markTestDataUsed();
+			test.markPassed();
 		} catch (Throwable e) {
 			throw (e);
 		} finally {
@@ -329,6 +345,7 @@ public class TC_Elephant {
 			stc_driverPassengerDetails.driverNotPresent(test);
 			stc_driverPassengerDetails.maxPassengerWarningMessage(test);
 			stc_launchPage.clickHomeButton(test);
+			test.markPassed();
 
 		} catch (Throwable e) {
 			throw (e);
@@ -352,6 +369,7 @@ public class TC_Elephant {
 			stc_driverPassengerDetails.passengerNotPresent(test);
 			stc_anotherVehicleInvolved.maxVehicleWarningMessage(test);
 			stc_launchPage.clickHomeButton(test);
+			test.markPassed();
 		} catch (Throwable e) {
 			throw (e);
 		} finally {
