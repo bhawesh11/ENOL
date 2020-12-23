@@ -205,7 +205,7 @@ public class TC_Elephant {
 
 	// --------------------------------------------------------------------------------------
 	//TC007
-    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
+    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim",dependsOnMethods= {"TC005"})
     @Parameters("ENV")
     public void TC007(String ENV) throws Throwable {
 
@@ -244,7 +244,7 @@ public class TC_Elephant {
 	// --------------------------------------------------------------------------------------
 
 	//TC009
-    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
+    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim",dependsOnMethods= {"TC007"})
     @Parameters("ENV")
     public void TC009(String ENV) throws Throwable {
 
