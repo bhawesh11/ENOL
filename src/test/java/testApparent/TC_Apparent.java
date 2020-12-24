@@ -55,7 +55,7 @@ public class TC_Apparent {
 		@Parameters("ENV")
 		public void TC001(String ENV) throws Throwable {
 
-			Testing test = new Testing(ENV, brandName, "Create_Claim_With_Login", "1D1V" );
+			Testing test = new Testing(ENV, brandName, "Create_Claim_With_Login", "TDA001-1D1V" );
 			try {
 
 				stc_launchPage.clickLogin(test);
@@ -70,6 +70,8 @@ public class TC_Apparent {
 				stc_WitnessPolice.witnessPolice_No(test);
 				stc_contactInformation.contactInformationPage(test);
 				stc_thankyouPage.getClaimNo(test);
+				test.markTestDataUsed();
+				test.markPassed();
 			} catch (Throwable e) {
 				throw (e);
 			} finally {
@@ -83,12 +85,13 @@ public class TC_Apparent {
 		@Test(enabled= true,priority = 5, description="Verify Four Vehicle Termination")
 		@Parameters("ENV")
 		public void TC002(String ENV) throws Throwable {
-			Testing test= new Testing(ENV, brandName,"VerifyFourVehicleTermination", "1D1V" );
+			Testing test= new Testing(ENV, brandName,"VerifyFourVehicleTermination", "TDA001-1D1V" );
 			try{
 				stc_launchPage.clickAllOtherClaims(test);
 				stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 				stc_incidentDetails.fourVehicleClaimMessage(test);
 				stc_launchPage.clickHomeButton(test);
+				test.markPassed();
 
 			} catch (Throwable e) {
 				throw (e);
@@ -104,7 +107,7 @@ public class TC_Apparent {
 		@Test(enabled= true,priority = 5, description="Create Claim Without VIN")
 		@Parameters("ENV")
 		public void TC003(String ENV) throws Throwable {
-			Testing test= new Testing(ENV, brandName,"CreateClaimWithoutVIN", "1D1V" );
+			Testing test= new Testing(ENV, brandName,"CreateClaimWithoutVIN", "TDA001-1D1V" );
 			try{
 				stc_launchPage.clickAllOtherClaims(test);
 				stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -116,6 +119,8 @@ public class TC_Apparent {
 				stc_WitnessPolice.witnessPolice(test);
 				stc_contactInformation.contactInformationPage(test);
 				stc_thankyouPage.getClaimNo(test);
+				test.markTestDataUsed();
+				test.markPassed();
 			} catch (Throwable e) {
 				throw (e);
 			} finally {
@@ -128,7 +133,7 @@ public class TC_Apparent {
 		@Parameters("ENV")
 		public void TC004(String ENV) throws Throwable {
 
-			Testing test = new Testing(ENV, brandName, "Create_Claim_without_login", "1D1V" );
+			Testing test = new Testing(ENV, brandName, "Create_Claim_without_login", "TDA001-1D1V" );
 			try {
 
 				stc_launchPage.clickAllOtherClaims(test);
@@ -141,6 +146,8 @@ public class TC_Apparent {
 				stc_WitnessPolice.witnessPolice_No(test);
 				stc_contactInformation.contactInformationPage(test);
 				stc_thankyouPage.getClaimNo(test);
+				test.markTestDataUsed();
+				test.markPassed();
 			} catch (Throwable e) {
 				throw (e);
 			} finally {
@@ -150,10 +157,10 @@ public class TC_Apparent {
 
 		// --------------------------------------------------------------------------------------
 		//TC005
-		@Test(enabled= true,priority = 5, description="WithVIN")
+		@Test(enabled= true,priority = 5, description="Create Claim With VIN")
 		@Parameters("ENV")
 		public void TC005(String ENV) throws Throwable {
-			Testing test= new Testing(ENV, brandName,"VIN/WithoutVIN", "1D1V" );
+			Testing test= new Testing(ENV, brandName,"CreateClaimWithVIN", "TDA001-1D1V" );
 			try{
 				stc_launchPage.clickAllOtherClaims(test);
 				stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -165,6 +172,8 @@ public class TC_Apparent {
 				stc_WitnessPolice.witnessPolice(test);
 				stc_contactInformation.contactInformationPage(test);
 				stc_thankyouPage.getClaimNo(test);
+				test.markTestDataUsed();
+				test.markPassed();
 
 			} catch (Throwable e) {
 				throw (e);
@@ -180,10 +189,12 @@ public class TC_Apparent {
 	    @Parameters("ENV")
 	    public void TC006(String ENV) throws Throwable {
 
-	        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessage", "1D1V" );
+	        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessage", "TDA001-1D1V" );
 	        try {
 	        	stc_launchpage.clickGlassOnlyClaims(test);
 	        	stc_glassclaimmessage.verifyGlassClaimMessage(test);
+	        	test.markPassed();
+	        	
 	        } catch (Throwable e) {
 	            throw (e);
 	        } finally {
@@ -197,11 +208,12 @@ public class TC_Apparent {
 	    @Parameters("ENV")
 	    public void TC007(String ENV) throws Throwable {
 
-	    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaim", "1D1V" );
+	    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaim", "TDA001-1D1V" );
 	    try {
 	    	stc_launchpage.clickAllOtherClaims(test);
 	    	stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 	    	stc_incidentDetails.verifyErrorMessage(test);
+	    	test.markPassed();
 	    } catch (Throwable e) {
 	        throw (e);
 	    } finally {
@@ -215,12 +227,13 @@ public class TC_Apparent {
 	    @Parameters("ENV")
 	    public void TC008(String ENV) throws Throwable {
 
-	        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessageWithLogin", "1D1V" );
+	        Testing test = new Testing(ENV, brandName, "VerifyGlassClaimMessageWithLogin", "TDA001-1D1V" );
 	        try {
 	        	stc_launchpage.clickLogin(test);
 	        	stc_login.login(test);
 	        	stc_launchpage.clickGlassOnlyClaims(test);
 	        	stc_glassclaimmessage.verifyGlassClaimMessage(test);
+	        	test.markPassed();
 	        } catch (Throwable e) {
 	            throw (e);
 	        } finally {
@@ -234,13 +247,14 @@ public class TC_Apparent {
 	    @Parameters("ENV")
 	    public void TC009(String ENV) throws Throwable {
 
-	    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaimWithLogin", "1D1V" );
+	    Testing test = new Testing(ENV, brandName, "VerifyDuplicateClaimWithLogin", "TDA001-1D1V" );
 	    try {
 	    	stc_launchpage.clickLogin(test);
 	    	stc_login.login(test);
 	    	stc_launchpage.clickAllOtherClaims(test);
 	    	stc_incidentDetails.fillIncidentDetails_Login(test);
 	    	stc_incidentDetails.verifyErrorMessage(test);
+	    	test.markPassed();
 	    } catch (Throwable e) {
 	        throw (e);
 	    } finally {
@@ -253,12 +267,12 @@ public class TC_Apparent {
 		@Test(enabled= true,priority = 5, description="IncidentDate_Future")
 		@Parameters("ENV")
 		public void TC0010(String ENV) throws Throwable {
-			Testing test= new Testing(ENV, brandName,"IncidentDate_Future", "1D1V" );
+			Testing test= new Testing(ENV, brandName,"IncidentDate_Future", "TDA001-1D1V" );
 			try{
 				stc_launchPage.clickAllOtherClaims(test);
-				stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+				stc_incidentDetails.incidentDate_FutureDate(test);
 				stc_incidentDetails.verifyErrorMessage(test);
-				
+				test.markPassed();
 			} catch (Throwable e) {
 				throw (e);
 			} finally {
@@ -273,12 +287,12 @@ public class TC_Apparent {
 		@Test(enabled= true,priority = 5, description="IncidentDate_Out_Effective")
 		@Parameters("ENV")
 		public void TC011(String ENV) throws Throwable {
-			Testing test= new Testing(ENV, brandName,"IncidentDate_Out_Effective", "1D1V" );
+			Testing test= new Testing(ENV, brandName,"IncidentDate_Out_Effective", "TDA001-1D1V" );
 			try{			
 				stc_launchPage.clickAllOtherClaims(test);
-				stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
+				stc_incidentDetails.incidentDate_OutEffect(test);
 				stc_incidentDetails.verifyErrorMessage(test);
-				
+				test.markPassed();
 			} catch (Throwable e) {
 				throw (e);
 			} finally {
@@ -292,7 +306,7 @@ public class TC_Apparent {
 		@Test(enabled= true,priority = 5, description="Create Claim With Max Details")
 		@Parameters("ENV")
 		public void TC012(String ENV) throws Throwable {
-			Testing test= new Testing(ENV, brandName,"CreateClaimWithMaxDetails", "1D1V" );
+			Testing test= new Testing(ENV, brandName,"CreateClaimWithMaxDetails", "TDA001-1D1V" );
 			try{
 				stc_launchPage.clickAllOtherClaims(test);
 				stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -306,6 +320,8 @@ public class TC_Apparent {
 				stc_WitnessPolice.witnessPolice(test);
 				stc_contactInformation.contactInformationPage(test);
 				stc_thankyouPage.getClaimNo(test);
+				test.markTestDataUsed();
+				test.markPassed();
 			} catch (Throwable e) {
 				throw (e);
 			} finally {
@@ -319,7 +335,7 @@ public class TC_Apparent {
 		@Test(enabled= true,priority = 5, description="Max Passenger")
 		@Parameters("ENV")
 		public void TC013(String ENV) throws Throwable {
-			Testing test= new Testing(ENV, brandName,"VerifyMaxPassengerLimit", "1D1V" );
+			Testing test= new Testing(ENV, brandName,"VerifyMaxPassengerLimit", "TDA001-1D1V" );
 			try{
 				stc_launchPage.clickAllOtherClaims(test);
 				stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -328,6 +344,7 @@ public class TC_Apparent {
 				stc_driverPassengerDetails.driverNotPresent(test);
 				stc_driverPassengerDetails.maxPassengerWarningMessage(test);
 				stc_launchPage.clickHomeButton(test);
+				test.markPassed();
 
 			} catch (Throwable e) {
 				throw (e);
@@ -341,7 +358,7 @@ public class TC_Apparent {
 		@Test(enabled= true,priority = 5, description="Max Vehicle Alert")
 		@Parameters("ENV")
 		public void TC014(String ENV) throws Throwable {
-			Testing test= new Testing(ENV, brandName,"VerifyMaxVehicleLimit", "1D1V" );
+			Testing test= new Testing(ENV, brandName,"VerifyMaxVehicleLimit", "TDA001-1D1V" );
 			try{
 				stc_launchPage.clickAllOtherClaims(test);
 				stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
@@ -351,10 +368,13 @@ public class TC_Apparent {
 				stc_driverPassengerDetails.passengerNotPresent(test);
 				stc_anotherVehicleInvolved.maxVehicleWarningMessage(test);
 				stc_launchPage.clickHomeButton(test);
+				test.markPassed();
 			} catch (Throwable e) {
 				throw (e);
 			} finally {
 				test.tearDown();
 			}
-		}// closing TC014 method}
-}
+		}// closing TC014 method
+
+	}
+
