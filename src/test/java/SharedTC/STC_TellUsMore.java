@@ -24,8 +24,16 @@ public class STC_TellUsMore {
         test.webFunctions().type(test, tellUsMore.textbox_FirstName, test.getTestData("TellUsMore.FirstName"));
         test.webFunctions().type(test, tellUsMore.textbox_LastName, test.getTestData("TellUsMore.LastName"));
         test.webFunctions().type(test, tellUsMore.textbox_DOB, test.getTestData("TellUsMore.DOB"));
+        
+        try {
+        if(tellUsMore.textbox_PhoneNo.isDisplayed()==true) {
         test.webFunctions().type(test, tellUsMore.textbox_PhoneNo, test.getTestData("TellUsMore.PhoneNumber"));
         test.webFunctions().type(test, tellUsMore.textbox_Email, test.getTestData("TellUsMore.EmailID"));
+        }
+        }catch (Exception e) {
+			
+		}
+        
         test.webFunctions().click(test,tellUsMore.dropdown_RelationToInsured);
         test.webFunctions().click(test,tellUsMore.dropdownValue_PolicyHolder);       
         test.webFunctions().click(test, tellUsMore.button_IncidentLocation_OtherLocation);
