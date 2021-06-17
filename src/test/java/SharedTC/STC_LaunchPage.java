@@ -1,9 +1,7 @@
 package SharedTC;
 
-import org.openqa.selenium.support.PageFactory;
-
-
 import ApplicationPages.LaunchPage;
+import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
 
 public class STC_LaunchPage {
@@ -62,6 +60,12 @@ public class STC_LaunchPage {
          test.setPage(LaunchPage.class);
          LaunchPage launchpage = (LaunchPage) PageFactory.initElements(test.driver, test.getPage());
          test.webFunctions().click(test, launchpage.btn_Home);
+         try{
+             if(launchpage.btn_LeavePage.isDisplayed()==true){
+                 test.webFunctions().click(test,launchpage.btn_LeavePage);
+             }
+         }
+         catch (Exception e){}
          test.getLogger().info("Clicked on 'Home Button'");
 
      }

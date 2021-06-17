@@ -1,8 +1,7 @@
 package SharedTC;
 
-import org.openqa.selenium.support.PageFactory;
-
 import ApplicationPages.ContactInformationPage;
+import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
 
 public class STC_ContactInformation {

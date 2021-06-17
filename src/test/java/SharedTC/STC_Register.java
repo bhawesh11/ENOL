@@ -1,8 +1,7 @@
 package SharedTC;
 
-import org.openqa.selenium.support.PageFactory;
-
 import ApplicationPages.Register;
+import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
 
 public class STC_Register {
@@ -17,7 +16,14 @@ public class STC_Register {
 	        test.webFunctions().type(test, register.textBox_Password, test.getOutput("Password"));
 	        test.webFunctions().type(test, register.textBox_ConfirmPassword, test.getOutput("Password"));
 	        test.webFunctions().click(test, register.btn_Register);
-	        test.getLogger().info("Account is activated on Portal.");
+	        test.webFunctions().staticWait(17000);
+	        test.getLogger().info("Page Title : "+test.webFunctions().getTitle(test));
+	        if ((test.webFunctions().getTitle(test)).contains("Type of Claim"))
+				test.getLogger().info("Account is activated on Portal and logged in successfully.");
+			else {
+				test.getLogger().error("Account Activation Failed");
+			}
+	        
 	    }
 	    
 	    public void goToLogin(Testing test){

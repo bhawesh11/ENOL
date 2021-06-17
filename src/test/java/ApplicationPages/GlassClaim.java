@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class GlassClaim {
 	
-	@FindBy(xpath="//div[@class='glass-only']/p//text()")
+	@FindBy(xpath="//p[@class='copy']")
 	public WebElement text_GlassClaims;
 	
 	@FindBy(xpath="(//div[@class='glass-only']/p//text())[2]")

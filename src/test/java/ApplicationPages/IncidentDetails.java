@@ -24,8 +24,10 @@ public class IncidentDetails {
     public WebElement dropdownValue_PM;
 
 	//Dynamic Webelement
+
 	public String button_VehicleInvolved= "//span[text()='{0}']/ancestor::div[1]/input[1]";
 	
+
 	@FindBy(xpath="//span[text()='Next']")
     public WebElement button_Next;
 	
@@ -35,7 +37,8 @@ public class IncidentDetails {
 	@FindBy(xpath="(//mat-error)[1]")
 	public WebElement error_IncidentDate;
 
-	@FindBy(xpath="//*[text()='Unfortunately, we are unable to process your claim online. Please call us at 844-937-5353. Our Claims Specialists are available 24/7 to get started working on your claim.']")
+	//@FindBy(xpath="//*[text()='Unfortunately, we are unable to process your claim online. Please call us at 844-937-5353. Our Claims Specialists are available 24/7 to get started working on your claim.']")
+	@FindBy(xpath="//p[@class='copy']")
 	public WebElement FourVehicle_ClaimMesssage;
 			
 		

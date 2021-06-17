@@ -15,14 +15,16 @@ public class Testing {
     private BrowserFactory bf;
     private WebFunctions webFunctions;
     private Logger logger;
+    private Reporter reporter;
 
     //	CONSTRUCTOR
-    public Testing(String environment, String brandName, String scriptName) {
+    public Testing(String environment, String brandName, String scriptName, String dataScriptName) {
 
 //		1. INITIALIZING ATTRIBUTES:
         db = new Database();
         td = new TestData(db, brandName, scriptName);
-        //output = new Output(db, brandName, environment);
+        reporter = new Reporter(brandName, scriptName);
+        output = new Output(db, brandName, environment, dataScriptName);
         webFunctions = new WebFunctions();
         address = new URL(brandName);
         this.brandName = brandName;
@@ -30,13 +32,14 @@ public class Testing {
 
 //		2. INITIALIZING DRIVER
         String url = address.getURL(environment);
-        System.out.println("-------test-----" + url);
+        System.out.println("-------LAUNCHING-----" + url);
         String browser = "Google Chrome";
         bf = new BrowserFactory(browser, url);
         driver = bf.driver;
 
 //		3. INITIALING CURRENT PAGE
         page = null;
+        reporter.info("Executing Test on: "+url);
 
     }
 
@@ -57,7 +60,7 @@ public class Testing {
         bf.closeBrowser();
 //        db.insertRecordInDatabase(scriptName, "Elephant");
         //logger.info(output.getOutputs());
-        
+        reporter.flush();
     }
 
     //	---------------------------------------------------------------------
@@ -91,12 +94,44 @@ public class Testing {
     public String getDate(int offSet) {
         return td.getDate(offSet);
     }
+    
+    public String getDate(String effectiveDate) {
+        return td.addDaystoDate(effectiveDate);
+    }
+    
+    public String getLessDate(String effectiveDate){
+    	return td.lessDaystoDate(effectiveDate);
+    }
 
     public String getRandomString(int length) {
         return td.createRandomString(length);
     }
 //	---------------------------------------------------------------------
-    public Logger getLogger() {
-        return logger;
+    public Reporter getLogger() {
+        return reporter;
     }
-}
+        
+    public void markPassed() {
+        reporter.pass("Test case is successful!");
+        String result = output.getOutputs().toString()
+        		.replace("{","")
+        		.replaceAll(","," | ")
+        		.replaceAll("\"", "")
+        		.replace("}", "");
+        reporter.info(result);
+       }
+
+    public void markFailed(String message) {
+    	reporter.fail("Test case has failed!");
+    	reporter.fail(message);
+    }
+    
+    public void markTestDataUsed() {
+    	int row = db.markOutputUsed();
+    	if(row == 1)
+    	reporter.info("Test data marked as Used");
+    	else 
+    		if (row == 0)
+    			reporter.info("Unable to mark Test Data as Used.");
+    	}
+ }

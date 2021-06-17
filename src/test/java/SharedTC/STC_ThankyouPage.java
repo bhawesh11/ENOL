@@ -1,8 +1,7 @@
 package SharedTC;
 
-import org.openqa.selenium.support.PageFactory;
-
 import ApplicationPages.ThankyouPage;
+import org.openqa.selenium.support.PageFactory;
 import resources.Testing;
 
 public class STC_ThankyouPage {

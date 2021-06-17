@@ -1,23 +1,15 @@
 package resources;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.io.FileHandler;
-import java.io.File;
 
 public class WebFunctions {
 
@@ -25,7 +17,7 @@ public class WebFunctions {
 
 	// TYPE
 	public void type(Testing test, WebElement element, String value) {
-		WebDriverWait wait = new WebDriverWait(test.driver, 40);
+		WebDriverWait wait = new WebDriverWait(test.driver, 30);
 		Boolean done = false;
 		int attempt = 0;
 		done = false;
@@ -63,7 +55,7 @@ public class WebFunctions {
 			catch (WebDriverException e) {
 				if (attempt <= 3) {
 					test.getLogger().error("WebDriver Exception");
-					staticWait(2000);
+					staticWait(3000);
 				} else
 					throw e;
 			} // Closing CATCH-3
@@ -75,7 +67,7 @@ public class WebFunctions {
 
 	// TYPE DYNAMIC
 	public void type(Testing test, String webElement, String var1, String value) {
-		WebDriverWait wait = new WebDriverWait(test.driver, 40);
+		WebDriverWait wait = new WebDriverWait(test.driver, 30);
 		Boolean done = false;
 		int attempt = 0;
 		webElement = webElement.replace("{0}", var1);
@@ -107,7 +99,7 @@ public class WebFunctions {
 	// ------------------------------------------------------------------------------
 	// CLICK ONLY WITH WEBELEMENT PARAMETER
 	public void click(Testing test, WebElement element) {
-		WebDriverWait wait = new WebDriverWait(test.driver, 40);
+		WebDriverWait wait = new WebDriverWait(test.driver, 20);
 		Boolean done = false;
 		int attempt = 0;
 		done = false;
@@ -118,7 +110,7 @@ public class WebFunctions {
 //				wait.until(ExpectedConditions.elementToBeClickable(element));
 				element.click();
 				try {
-					Thread.sleep(4000);
+					Thread.sleep(2000);
 				} catch (Exception e) {
 				}
 				;
@@ -136,7 +128,7 @@ public class WebFunctions {
 			catch (NoSuchElementException e) {
 				if (attempt <= 3) {
 					test.getLogger().error("NoSuchElement Exception");
-					staticWait(3000);
+					staticWait(2000);
 					Utility.stop(test);
 				} else
 					throw e;
@@ -156,7 +148,7 @@ public class WebFunctions {
 	// ------------------------------------------------------------------------------
 //	CLICK DYNAMIC
 	public void click(Testing test, String webElement, String value) {
-		WebDriverWait wait = new WebDriverWait(test.driver, 40);
+		WebDriverWait wait = new WebDriverWait(test.driver, 30);
 		Boolean done = false;
 		int attempt = 0;
 
@@ -169,6 +161,20 @@ public class WebFunctions {
 
 //	-------------------------------------------------------------------------------
 
+	// CLICKJS DYNAMIC
+	public void clickjs(Testing test, String webElement, String value) {
+		WebDriverWait wait = new WebDriverWait(test.driver, 40);
+		Boolean done = false;
+		int attempt = 0;
+
+		webElement = webElement.replace("{0}", value);
+		WebElement element = test.driver.findElement(By.xpath(webElement));
+
+		clickJS(test, element);
+
+	}// Closing METHOD
+
+	//	-------------------------------------------------------------------------------
 	// CLICK DYNAMIC-2
 	public void click(Testing test, String webElement, String value1, String value2) {
 		WebDriverWait wait = new WebDriverWait(test.driver, 40);
@@ -544,4 +550,9 @@ public class WebFunctions {
 
 		return fileName;
 	}
+	
+	//============================================================================
+	public String getTitle(Testing test) {
+    	return test.driver.getTitle();
+    }
 }
