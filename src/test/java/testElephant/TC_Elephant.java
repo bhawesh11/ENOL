@@ -173,7 +173,7 @@ public class TC_Elephant {
 			stc_WitnessPolice.witnessPolice(test);
 			stc_contactInformation.contactInformationPage(test);
 			stc_thankyouPage.getClaimNo(test);
-			test.markTestDataUsed();
+			//test.markTestDataUsed();
 			test.markPassed();
 
 		} catch (Throwable e) {
@@ -186,7 +186,7 @@ public class TC_Elephant {
 	// --------------------------------------------------------------------------------------
 
     //TC006
-    @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
+    @Test(enabled = false, priority = 5, description = "Verify Glass Claim Message")
     @Parameters("ENV")
     public void TC006(String ENV) throws Throwable {
 
@@ -205,7 +205,7 @@ public class TC_Elephant {
 
 	// --------------------------------------------------------------------------------------
 	//TC007
-    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim",dependsOnMethods= {"TC005"})
+    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim Without Login")
     @Parameters("ENV")
     public void TC007(String ENV) throws Throwable {
 
@@ -224,7 +224,7 @@ public class TC_Elephant {
 	// --------------------------------------------------------------------------------------
 
 	//	TC008
-    @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
+    @Test(enabled = false, priority = 5, description = "Verify Glass Claim Message")
     @Parameters("ENV")
     public void TC008(String ENV) throws Throwable {
 
@@ -244,7 +244,7 @@ public class TC_Elephant {
 	// --------------------------------------------------------------------------------------
 
 	//TC009
-    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim",dependsOnMethods= {"TC007"})
+    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim With Login")
     @Parameters("ENV")
     public void TC009(String ENV) throws Throwable {
 
@@ -255,6 +255,7 @@ public class TC_Elephant {
     	stc_launchpage.clickAllOtherClaims(test);
     	stc_incidentDetails.fillIncidentDetails_Login(test);
     	stc_incidentDetails.verifyErrorMessage(test);
+    	test.markTestDataUsed();
     	test.markPassed();
     } catch (Throwable e) {
         throw (e);
@@ -267,7 +268,7 @@ public class TC_Elephant {
 	//TC0010
 	@Test(enabled= true,priority = 5, description="IncidentDate_Future")
 	@Parameters("ENV")
-	public void TC0010(String ENV) throws Throwable {
+	public void TC010(String ENV) throws Throwable {
 		Testing test= new Testing(ENV, brandName,"IncidentDate_Future", "1D1V" );
 		try{
 			stc_launchPage.clickAllOtherClaims(test);

@@ -172,7 +172,7 @@ public class TC_Apparent {
 				stc_WitnessPolice.witnessPolice(test);
 				stc_contactInformation.contactInformationPage(test);
 				stc_thankyouPage.getClaimNo(test);
-				test.markTestDataUsed();
+				//test.markTestDataUsed();
 				test.markPassed();
 
 			} catch (Throwable e) {
@@ -185,7 +185,7 @@ public class TC_Apparent {
 		// --------------------------------------------------------------------------------------
 
 	    //TC006
-	    @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
+	    @Test(enabled = false, priority = 5, description = "Verify Glass Claim Message")
 	    @Parameters("ENV")
 	    public void TC006(String ENV) throws Throwable {
 
@@ -204,7 +204,7 @@ public class TC_Apparent {
 
 		// --------------------------------------------------------------------------------------
 		//TC007
-	    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
+	    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim Without Login")
 	    @Parameters("ENV")
 	    public void TC007(String ENV) throws Throwable {
 
@@ -214,6 +214,7 @@ public class TC_Apparent {
 	    	stc_incidentDetails.fillIncidentDetails_WithoutLogin(test);
 	    	stc_incidentDetails.verifyErrorMessage(test);
 	    	test.markPassed();
+	    	
 	    } catch (Throwable e) {
 	        throw (e);
 	    } finally {
@@ -223,7 +224,7 @@ public class TC_Apparent {
 		// --------------------------------------------------------------------------------------
 
 		//	TC008
-	    @Test(enabled = true, priority = 5, description = "Verify Glass Claim Message")
+	    @Test(enabled = false, priority = 5, description = "Verify Glass Claim Message")
 	    @Parameters("ENV")
 	    public void TC008(String ENV) throws Throwable {
 
@@ -243,7 +244,7 @@ public class TC_Apparent {
 		// --------------------------------------------------------------------------------------
 
 		//TC009
-	    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim")
+	    @Test(enabled = true, priority = 5, description = "Verify Duplicate Claim With Login")
 	    @Parameters("ENV")
 	    public void TC009(String ENV) throws Throwable {
 
@@ -255,6 +256,7 @@ public class TC_Apparent {
 	    	stc_incidentDetails.fillIncidentDetails_Login(test);
 	    	stc_incidentDetails.verifyErrorMessage(test);
 	    	test.markPassed();
+	    	test.markTestDataUsed();
 	    } catch (Throwable e) {
 	        throw (e);
 	    } finally {
@@ -266,7 +268,7 @@ public class TC_Apparent {
 		//TC0010
 		@Test(enabled= true,priority = 5, description="IncidentDate_Future")
 		@Parameters("ENV")
-		public void TC0010(String ENV) throws Throwable {
+		public void TC010(String ENV) throws Throwable {
 			Testing test= new Testing(ENV, brandName,"IncidentDate_Future", "TDA001-1D1V" );
 			try{
 				stc_launchPage.clickAllOtherClaims(test);
