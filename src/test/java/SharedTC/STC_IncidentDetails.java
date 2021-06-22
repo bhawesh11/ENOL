@@ -25,6 +25,7 @@ public class STC_IncidentDetails {
 	public void fillIncidentDetails_WithoutLogin(Testing test){
 		test.setPage(IncidentDetails.class);
         IncidentDetails incidentDetails = (IncidentDetails) PageFactory.initElements(test.driver, test.getPage());
+        test.webFunctions().staticWait(2000);
         test.webFunctions().type(test, incidentDetails.textbox_PolicyNumber, test.getOutput("Policy Number"));
         test.getLogger().info("Incidate Date :"+test.getDate(test.getOutput("Effective Date")));
         test.webFunctions().type(test, incidentDetails.textbox_IncidentDate, test.getDate(test.getOutput("Effective Date")));
@@ -35,6 +36,7 @@ public class STC_IncidentDetails {
 
         test.webFunctions().click(test, incidentDetails.button_Next);
         test.getLogger().info("Incident Details Info entered, navigating to Vehicle Details Page...");
+
      }
 	public void incidentDate_FutureDate(Testing test) {
 		test.setPage(IncidentDetails.class);
@@ -74,10 +76,11 @@ public class STC_IncidentDetails {
          IncidentDetails incidentDetails = (IncidentDetails) PageFactory.initElements(test.driver, test.getPage());
          ActualErrorMessage = test.webFunctions().readInfo(test, incidentDetails.FourVehicle_ClaimMesssage);
          test.getLogger().info("Actual Error Message : " + ActualErrorMessage);
-         assertTrue(ActualErrorMessage.contains(test.getTestData("IncidentDetails.ExpectedClaimMessage")));
+         assertTrue(ActualErrorMessage.equals(test.getTestData("IncidentDetails.ExpectedClaimMessage")));
          test.getLogger().info("Assertion Passed, error text is correct...");
 
 
      }
+   
 
 }

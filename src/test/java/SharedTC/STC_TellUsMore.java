@@ -10,6 +10,7 @@ public class STC_TellUsMore {
 		test.setPage(TellUsMore.class);
 		TellUsMore tellUsMore = (TellUsMore) PageFactory.initElements(test.driver, test.getPage());
 
+		test.webFunctions().staticWait(2000);
 		test.webFunctions().click(test, tellUsMore.button_Reporter_FirstOption);
 		test.webFunctions().click(test, tellUsMore.button_Location_PHAddress);
 		test.webFunctions().type(test, tellUsMore.textarea_IncidentDescription,test.getTestData("TellUsMore.IncidentDescription"));
@@ -21,11 +22,20 @@ public class STC_TellUsMore {
 		test.setPage(TellUsMore.class);
         TellUsMore tellUsMore = (TellUsMore) PageFactory.initElements(test.driver, test.getPage());
         
+        test.webFunctions().staticWait(2000);
         test.webFunctions().type(test, tellUsMore.textbox_FirstName, test.getTestData("TellUsMore.FirstName"));
         test.webFunctions().type(test, tellUsMore.textbox_LastName, test.getTestData("TellUsMore.LastName"));
         test.webFunctions().type(test, tellUsMore.textbox_DOB, test.getTestData("TellUsMore.DOB"));
+        
+        try {
+        if(tellUsMore.textbox_PhoneNo.isDisplayed()==true) {
         test.webFunctions().type(test, tellUsMore.textbox_PhoneNo, test.getTestData("TellUsMore.PhoneNumber"));
         test.webFunctions().type(test, tellUsMore.textbox_Email, test.getTestData("TellUsMore.EmailID"));
+        }
+        }catch (Exception e) {
+			
+		}
+        
         test.webFunctions().click(test,tellUsMore.dropdown_RelationToInsured);
         test.webFunctions().click(test,tellUsMore.dropdownValue_PolicyHolder);       
         test.webFunctions().click(test, tellUsMore.button_IncidentLocation_OtherLocation);

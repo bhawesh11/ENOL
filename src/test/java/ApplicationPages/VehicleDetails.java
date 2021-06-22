@@ -27,8 +27,10 @@ public class VehicleDetails {
     public WebElement dropdown_Model;
 
     // Will be used for both Make and Model
-    public String dropdown_SelectMakeModel= "//mat-option//span[contains(text(),'{0}')]"; // Replace the Car Make or Model with {0}
-
+    
+    //public String dropdown_SelectMakeModel= "//mat-option//span[contains(text(),'{0}')]"; // Replace the Car Make or Model with {0}
+    public String dropdown_SelectMakeModel= "(//mat-option//span[contains(text(),'')])[1]";
+    
     public String btn_WhatHappend= "//div//label[contains(text(),'{0}')]/ancestor::div[1]/input[1]"; // Replace the value with {0}
 
     public String btn_WhatHappendType= "//div//label[contains(text(),'{0}')]/ancestor::div[1]/input[1]"; // Replace the value with {0}

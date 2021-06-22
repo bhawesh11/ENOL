@@ -8,9 +8,11 @@ public class ContactInformationPage {
 	@FindBy(id = "email")
 	public WebElement textbox_EmailID;
 
+	@FindBy(xpath = "//div[contains(text(),'Other')]")
+	public WebElement btn_Other;
+	
 	@FindBy(xpath = "//input[@formcontrolname='PhoneNumber']")
 	public WebElement textbox_PhoneNo;
-	
 	
 	@FindBy(xpath = "//*[@id='ContactAgreement']/label/div")
 	public WebElement chkbox_Agreement;
@@ -20,7 +22,7 @@ public class ContactInformationPage {
 
 	public String netwrokProvider = "//*[text()=' {0} ']";
 
-	@FindBy(xpath = "//mat-radio-group/mat-radio-button[1]/label/div[2]")
+	@FindBy(xpath = "//div[contains(text(),'8:00 AM - 12:00 PM EST')]")
 	public WebElement btn_TimeToContact;
 
 	@FindBy(xpath = "//*[text()='File Your Claim']")
